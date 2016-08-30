@@ -78,7 +78,6 @@ public class RequestMappingDemoController {
         return str;
     }
 
-    //TODO: wohin damit??
     // this request handler method consumes json
     // @RequestBody binds the posted data to the method parameter
     // Client-side ajax requests must include 'content-type: application/json' header
