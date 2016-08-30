@@ -1,7 +1,7 @@
-package com.common;
+package com.common.response;
 
-import com.common.BaseResponse;
-import com.common.Message;
+import com.common.response.BaseResponse;
+import com.common.response.Message;
 
 /**
  * Created by fsubasi on 15.02.2016.

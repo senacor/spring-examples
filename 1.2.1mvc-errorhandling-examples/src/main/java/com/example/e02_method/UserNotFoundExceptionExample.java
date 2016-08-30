@@ -1,9 +1,11 @@
 package com.example.e02_method;
 
-import com.common.BaseResponse;
-import com.common.User;
-import com.common.UserInMemoryDB;
-import com.common.UserResponse;
+import com.common.exceptions.ExceptionThrower;
+import com.common.exceptions.UserNotFoundException;
+import com.common.response.BaseResponse;
+import com.common.model.User;
+import com.common.service.UserService;
+import com.common.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
@@ -19,34 +21,45 @@ import java.net.URI;
  * -------------------------------------------------------------------------------------------
  * Class to Raise UserNotFound Exception.
  * -------------------------------------------------------------------------------------------
- * Hit the URL corresponding to this class to raise the custom exception "UserNotFoundException" when user is not founf.
+ * Hit the URL corresponding to this class to raise the custom exception "UserNotFoundException" when user is not found.
  */
 
 @Controller
 @RequestMapping("/users")
-public class Users {
+public class UserNotFoundExceptionExample {
 
-    UserInMemoryDB userB=new UserInMemoryDB();
-    public Users() {
-        userB.initialiseUsers();
-    }
+    private UserService userB = new UserService();
 
     @Autowired
     ApplicationContext context;
 
     @RequestMapping(value = "getUserById", method = RequestMethod.GET)
     @ResponseBody
-    public User getUserById(@RequestParam(value = "id", required = true) String id) {
-
+    public String getUserById(@RequestParam(value = "id", required = true) String id) {
         User user = getUserFromID(Integer.parseInt(id));
-
-        return user;
+        return user.toString();
     }
 
     public User getUserFromID(int uId)
     {
         User user1 = userB.getUserFromID(uId);
-        return user1;
+        if (user1 == null) {
+            throw new UserNotFoundException("User with ID " + uId + " not found");
+        }
+        else {
+            return user1;
+        }
+    }
+
+    // @ExceptionHandler declares an exception handler for the specified
+    // exception types. Only exceptions thrown in the same controller
+    // will be intercepted by the error handler method.
+    @ExceptionHandler(UserNotFoundException.class)// NOTE TO SELF: If the annotation value is not used,
+    // then the exception types listed as method arguments are used
+    @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
+    @ResponseBody
+    public BaseResponse throwError(UserNotFoundException e){
+        return ExceptionThrower.throwException(e, "user_not_found");
     }
 
     /**********************************************************************
@@ -59,7 +72,7 @@ public class Users {
     @ResponseBody
     public ResponseEntity<BaseResponse> saveUsers(@RequestBody User user){
         //System.out.println("inside Controller");
-        User user1 = userB.saveUsers(user);
+        User user1 = userB.saveUser(user);
         UserResponse userResponse = new UserResponse(user1);
         HttpHeaders headers = new HttpHeaders();
         String location = "http://localhost/user/"+ Integer.toString(user1.getUserId());
@@ -83,10 +96,5 @@ public class Users {
         userB.updateUser(user);
         String response = "The details have been updated for the user with id : " + Integer.toString(user.getUserId());
         return response;
-
     }
-
-
-
 }
-

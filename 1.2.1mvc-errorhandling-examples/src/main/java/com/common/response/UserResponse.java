@@ -1,4 +1,8 @@
-package com.common;
+package com.common.response;
+
+import com.common.model.User;
+import com.common.response.BaseResponse;
+import com.common.response.Message;
 
 /**
  * Created by fsubasi on 15.02.2016.
