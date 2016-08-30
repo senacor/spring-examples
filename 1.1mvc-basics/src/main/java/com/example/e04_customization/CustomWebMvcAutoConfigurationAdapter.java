@@ -19,8 +19,8 @@ public class CustomWebMvcAutoConfigurationAdapter extends WebMvcAutoConfiguratio
         // spring matches all of the following requests to this controller method
         // .../user   .../user.xml  .../user.json, the following configuration in common-fsl-service
         // cancels this behavior, i.e. only .../user will be intercepted by the controller method
-        configurer.setUseSuffixPatternMatch(false);
-        configurer.setUseRegisteredSuffixPatternMatch(false);
+        configurer.setUseSuffixPatternMatch(true);
+        configurer.setUseRegisteredSuffixPatternMatch(true);
     }
 
     // Add handlers to serve static resources such as images, js, and, css files from specific locations

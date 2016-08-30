@@ -1,4 +1,4 @@
-package com.example.e05_client;
+package com.example.e06_client;
 
 import com.common.model.User;
 import com.common.response.UserResponse;
