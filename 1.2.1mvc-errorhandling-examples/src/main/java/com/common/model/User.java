@@ -1,4 +1,4 @@
-package com.common;
+package com.common.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
@@ -15,6 +15,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public User() {
+    }
 
     public int getUserId() {return userId;}
 
@@ -42,6 +51,11 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return getUserId() + " -- " + getFirstName() + " " + getLastName() + " --- " + getEmail();
     }
 
 }

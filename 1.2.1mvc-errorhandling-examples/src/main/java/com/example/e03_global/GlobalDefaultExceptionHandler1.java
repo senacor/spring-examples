@@ -1,21 +1,16 @@
 package com.example.e03_global;
 
-import com.common.BaseResponse;
-import com.common.Message;
-import com.common.Severity;
-import com.common.UserNotFoundException;
+import com.common.response.BaseResponse;
+import com.common.response.Message;
+import com.common.response.Severity;
+import com.common.exceptions.UserNotFoundException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 

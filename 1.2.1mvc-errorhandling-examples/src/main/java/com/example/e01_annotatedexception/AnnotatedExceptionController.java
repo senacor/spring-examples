@@ -1,10 +1,10 @@
 package com.example.e01_annotatedexception;
 
+import com.common.exceptions.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,14 +26,14 @@ public class AnnotatedExceptionController {
     public String throwBookNotFoundException(){
         throw new BookNotFoundException();
     }
-/*
+
     @RequestMapping("/queryParam")
     @ResponseBody
     public String queryParam(@RequestParam("name")String name) throws Exception{
         if(true)
-            throw new HttpMediaTypeNotAcceptableException("BUBU");
+            throw new HttpMediaTypeNotAcceptableException("bubu");
         HandlerExceptionResolverComposite composite = (HandlerExceptionResolverComposite)context.getBean("handlerExceptionResolver");
         return composite.getExceptionResolvers().stream().map(handlerExceptionResolver -> handlerExceptionResolver.toString())
                 .reduce("", (a,b)->String.join(",", a, b));
-    }*/
+    }
 }

@@ -1,4 +1,4 @@
-package com.common;
+package com.common.response;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
