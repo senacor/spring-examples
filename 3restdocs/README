@@ -1,0 +1,17 @@
+This project demonstrates the documentation created by Spring RestDocs.
+It provides an overview of generating REST API documentation for Spring projects.
+
+There are two examples given in this project. These examples are primarily written in *.asciidoc
+files. At compile time, these files are rendered into a formatted HTML file to be viewable in the
+browser.
+
+Spring Restdocs support test driven documentation and therefore all the documentation is generated
+in the test classes. It also allows the developer to generate code snippets, which can be included
+in the .asciidoc files (example of such inclusions can be seen in example 2).
+
+
+HOW TO RUN
+
+Step 1: maven install
+Step 2: spring boot run
+Step 3: visit this link from your browser: http://localhost:8080/docs/example_<example number>.html

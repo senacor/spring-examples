@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Error Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <style>
+        body{
+            width: 720px;
+            margin: 0 auto;
+            margin-top:200px;
+        }
+        p {
+            color: red;
+        }
+        span{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Default Error Page</h1>
+    <h3>There was an error processing: "<i><span th:text="${path}"></span></i>"</h3>
+    <p>Error: <span th:text="${error}"></span></p>
+    <p>Status: <span th:text="${status}"></span></p>
+    <p>Timestamp: <span th:text="${timestamp}"></span></p>
+    <p th:if="${exception}">Exception: <span th:text="${exception}"></span></p>
+    <p>Message: <span th:text="${message}"></span></p>
+    <p th:if="${trace}">Trace: <span th:text="${trace}"></span></p>
+</body>
+</html>

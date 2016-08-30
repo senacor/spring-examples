@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    config:
+      name: "service_halloWelt"
+      enabled: true
+      failFast: true
+      uri: ${configserver.uri}
+      profile: ${spring.profiles.active}
+      label: ${configserver.label:master}
+---
+spring:
+  profiles: lokal
+  cloud:
+    config:
+      enabled: false
+---
+spring:
+  profiles: config-rot
+  cloud:
+    config:
+      enabled: true
+      uri: ${configserver.uri}
+      profile: "rot"
+---
+spring:
+  profiles: config-blau
+  cloud:
+    config:
+      enabled: true
+      uri: ${configserver.uri}
+      profile: "blau"
+---
+spring:
+  profiles: config-localhost
+  cloud:
+    config:
+      enabled: true
+      uri: "http://127.0.0.1:8888"
+      profile: "rot"

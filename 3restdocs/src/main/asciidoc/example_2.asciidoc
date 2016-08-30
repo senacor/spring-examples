@@ -1,0 +1,115 @@
+// This is the main asciidoc file, which will later be rendered into a static html documentation.
+
+// including the configurations from config.asciidoc file
+include::config.asciidoc[]
+
+= An example for REST requests demonstrating table of contents, and other formatting possibilities.
+// The html5 and docbook converters can render documents with multiple authors. Multiple authors and their emails are separated by semicolons (;) when they’re listed on the same line.
+First Author <fsubasi@example.com> ; Second Author <asiddiqui@senacor.com>
+
+= User
+
+== Get
+
+=== Get user by Id
+
+// Below we see the {snippets} attribute, we declare this inside maven asciidoc plugin 'attributes' section in pom.xml
+// This is the location of Spring RestDocs generated snippets
+include::{snippets}/get-user-by-id/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/get-user-by-id/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/get-user-by-id/http-response.adoc[]
+
+The response object has the following fields
+
+include::{snippets}/get-user-by-id/response-fields.adoc[]
+
+
+=== Get user by last name
+
+// Below we see the {snippets} attribute, we declare this inside maven asciidoc plugin 'attributes' section in pom.xml
+// This is the location of Spring RestDocs generated snippets
+include::{snippets}/get-user-by-last-name/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/get-user-by-last-name/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/get-user-by-last-name/http-response.adoc[]
+
+The response object has the following fields
+
+include::{snippets}/get-user-by-last-name/response-fields.adoc[]
+
+
+== Post
+
+=== Consume user
+
+// Below we see the {snippets} attribute, we declare this inside maven asciidoc plugin 'attributes' section in pom.xml
+// This is the location of Spring RestDocs generated snippets
+include::{snippets}/consume-user/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/consume-user/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/consume-user/http-response.adoc[]
+
+
+=== Save new user
+
+// Below we see the {snippets} attribute, we declare this inside maven asciidoc plugin 'attributes' section in pom.xml
+// This is the location of Spring RestDocs generated snippets
+include::{snippets}/save-user/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/save-user/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/save-user/http-response.adoc[]
+
+The response object has the following fields
+
+include::{snippets}/save-user/response-fields.adoc[]
+
+
+== Put
+
+=== Update user
+
+include::{snippets}/put-user/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/put-user/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/put-user/http-response.adoc[]
+
+
+== Delete
+
+=== Delete user
+
+include::{snippets}/delete-user/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/delete-user/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/delete-user/http-response.adoc[]

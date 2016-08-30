@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax requests</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <style>
+        html{
+            background-color: white;
+        }
+        body{
+            padding:20px 50px 40px 50px;
+            width: 860px;
+            margin:10px auto;
+            box-shadow:
+            inset #19d4ff 0 0 0 5px,
+            inset #18cdf7 0 0 0 1px,
+            inset #53dfff 0 0 0 10px,
+            inset #50d8f7 0 0 0 11px,
+            inset #8ce9ff 0 0 0 16px,
+            inset #88e2f7 0 0 0 17px,
+            inset #c5f4ff 0 0 0 22px,
+            inset #bfecf7 0 0 0 23px;
+            background-color: aliceblue;
+        }
+        label{
+            display: inline-block;
+            width: 70px;
+            margin-bottom:10px;
+        }
+
+        button{
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkblue; text-align:center">Spring Boot Demo Ajax Client</h1>
+<label>URL:</label><input style="width: 300px" type="text" id="url" /><br/>
+<label>Method:</label><select id="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="DELETE">DELETE</option>
+            <option value="PUT">PUT</option>
+        </select><br/>
+<label id="contentLabel" style="float:left;display:none;">content:</label>
+<textarea id="postContent" rows="10" cols="50" style="display:none;"></textarea>
+    <div style="float:left;width:380px;">
+        <h3>Add Header</h3>
+        <label>Key</label><input type="text" id="headerKey" /><br/>
+        <label>Value</label><input type="text" id="headerValue" /><br/>
+        <button class="btn btn-default" id="headerButton">Add Header</button>
+    </div>
+    <div style="float:left;width:380px;">
+        <h3>Headers</h3>
+        <ul id="headers"></ul>
+    </div>
+    <div style="clear:both;height:30px;"></div>
+
+<button id="button" class="btn btn-default btn-lg" style="clear:left;width:200px;margin-bottom:20px;">Submit</button><br/>
+<textarea id="textarea" rows="15" cols="100"></textarea>
+
+<script>
+    var requestHeaders = {};
+    headerButton.onclick = function(){
+        requestHeaders[headerKey.value] = headerValue.value;
+        addHeaderToPanel(headerKey.value, headerValue.value);
+    };
+
+    var clearHeaderPanel = function(){
+        while (headers.firstChild) {
+            headers.removeChild(headers.firstChild);
+        }
+    };
+    button.onclick = function () {
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4) {
+                    responseCallback(xhttp);
+                }
+            };
+            xhttp.open(method.value, url.value, true);
+        for(var prop in requestHeaders){
+            xhttp.setRequestHeader(prop, requestHeaders[prop]);
+        }
+        if(method.value === "POST"){
+            xhttp.send(postContent.value);
+            console.log(postContent.value);
+        } else {
+            xhttp.send();
+        }
+        requestHeaders = {};
+        clearHeaderPanel();
+    };
+
+    function addHeaderToPanel(key, value){
+        var li = document.createElement("li");
+        li.innerHTML = "<strong>" + key + ": </strong>" + value;
+        headers.appendChild(li);
+    }
+
+    function responseCallback(xhttp){
+        textarea.innerHTML = xhttp.responseText;
+    }
+
+    method.onchange = function(){
+        if(method.value === "POST"){
+            contentLabel.style.display = "block";
+            postContent.style.display = "initial";
+        } else {
+            postContent.style.display = "none";
+            contentLabel.style.display = "none";
+        }
+
+    };
+
+</script>
+</body>
+</html>

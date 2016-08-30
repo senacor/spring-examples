@@ -1,0 +1,19 @@
+This project demonstrates the documentation created by Swagger 2.0 specification.
+It provides an overview of generating REST API documentation for Spring projects using Springfox Swagger.
+
+For every API specification there should exist a bean of type Docket in Application class.
+
+Unlike typical Swagger documented projects, the Springfox Swagger does not require any annotation above the actual API.
+The example can be seen in src > main > java > com.example > restdocs > RequestMappingDemoController where no Swagger
+related annotation exists.
+
+Springfox Swagger integrates the Swagger UI library and the documentation can be seen at
+http://localhost:8080/swagger-ui.html
+
+
+HOW TO RUN
+
+Step 1: maven install
+Step 2: spring boot run
+Step 3: visit this link from your browser: http://localhost:8080/swagger-ui.html
+Step 4: choose from the dropdown which API you want to specifications for.

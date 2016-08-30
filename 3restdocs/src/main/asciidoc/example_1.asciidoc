@@ -1,0 +1,22 @@
+= A simple example to demonstrate the formatting of documentation with Spring RestDocs
+
+A section title represents the heading for a section. Section title levels are specified by two to six equal signs.
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+Now I am defining a link link:/actualLink[whatTheReaderWillSee]
+
+Syntax highlighting example
+
+[[app-listing]]
+[source,java]
+.Main.java
+----
+public class Main {
+    public static void main(String[] args){
+        System.out.println("Hello World");
+    }
+}
+----

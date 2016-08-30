@@ -1,0 +1,23 @@
+This project deals with the basics of Spring MVC.
+It gives an overview about the request mapping, response entity and customization of MVC.
+
+* The example codes are in the path:
+1.1mvc-basics > src > main > java > com > example.
+* The exercises are in the path:
+1.1mvc-basics > src > main > java > com > exercise.
+* The aplication.properties file is in the path:
+1.1mvc-basics > src > main > resources
+
+There are different possibilities to run the project:
+1) Open one console and execute in the directory that contains the file "pom.xml" the instruction "mvn spring-boot:run"
+   Open in the web browser the port where Tomcat container is. You can see this at the end of the text that is shown in the
+   console.
+2) Execute the .jar file. There are different options to achieve this:
+   * Execute in the directory that contains the file "mvc-basic-0.0.1-SNAPSHOT.jar" the instruction 
+     "java -jar mvc-basic-0.0.1-SNAPSHOT.jar"
+   * Execute the .jar file from the IDE
+   
+   To create the .jar file there are different options:
+   * Open one console and execute in the directory that contains the file "pom.xml" the instruction "mvn clean install"
+   * Open one console and execute in the directory that contains the file "pom.xml" the instruction "mvn package"
+   * Create the .jar file from the IDE

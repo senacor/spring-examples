@@ -1,0 +1,2 @@
+# Configuration in application.yml/.properties files are shared by all client services
+umgebung: Schulungsumgebung

@@ -1,0 +1,22 @@
+:doctype: book
+////
+     When the sectanchors attribute is enabled on a document, an anchor (empty link) is added before the section title.
+     The default Asciidoctor stylesheet renders the anchor as a section entity (§) that floats to the left of the section title.
+////
+:sectanchors:
+////
+    To turn section titles into links, enable the sectlinks attribute.
+    sectanchors attribute overrides sectlinks
+////
+:sectlinks:
+////
+   toc attribute creates a table of contents panel.
+   Here value left indicates that the panel will be positioned to the left of the documents content
+////
+:toc: left
+// Sets the title of table of contents panel. When no toc-title is specified, title is simply "Table of Contents"
+:toc-title: Index
+// By default, the TOC will display level 1 and level 2 section titles. You can set a different level with the toclevels attribute
+:toclevels: 5
+// enable syntax highlighting in a document, see example below
+:source-highlighter: highlightjs

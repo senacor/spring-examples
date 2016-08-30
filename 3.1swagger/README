@@ -1,0 +1,23 @@
+This project demonstrates the documentation created by Swagger.
+It provides an overview of generating REST API documentation for Spring projects.
+
+It requires a config file, which can be found under src > main > java > com.example > SwaggerConfig
+For every API specification there should exist a bean in this file.
+
+Additional information can be provided by adding different annotations before the REST API class
+and individual resource methods.
+The example can be seen in src > main > java > com.example > restdocs > RequestMappingDemoController
+
+The documentation is generated at the following link: http://localhost:8080/api-docs/
+It returns the API specification in JSON format.
+
+But Swagger provides a UI library which is integrated in this project and the formatted documentation
+can be seen at http://localhost:8080/
+
+
+HOW TO RUN
+
+Step 1: maven install
+Step 2: spring boot run
+Step 3: visit this link from your browser: http://localhost:8080/
+Step 4: paste this link in the text field on the page mentioned in step 3: http://localhost:8080/api-docs/

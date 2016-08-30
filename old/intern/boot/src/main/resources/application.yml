@@ -1,0 +1,23 @@
+# Instead of using profile specific file, with yaml we have the possibility of creating a multi-profile file
+#spring:
+#    profiles:
+#        active: development
+server:
+  port: 80
+info: # any properties prefixed with info are displayed in the /info actuator endpoint
+    maven:
+        group: '@project.groupId@'   # @xxx@ get values from maven properties
+        artifact: '@project.artifactId@'
+        description: '@project.description@'
+        version: '@project.version@'
+---
+spring:
+    profiles: development
+
+server:
+    port: 1111
+webmaster:
+    name: developmentName
+    email: developmentEmail
+    tel: 654321
+---

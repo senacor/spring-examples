@@ -1,0 +1,69 @@
+// This is a comment
+// Here we demonstrate the attributes used in FSL helloWelt project's .asciidoc file
+// four doctypes available: article, book, inline and manpage
+:doctype: book
+////
+     When the sectanchors attribute is enabled on a document, an anchor (empty link) is added before the section title.
+     The default Asciidoctor stylesheet renders the anchor as a section entity (§) that floats to the left of the section title.
+////
+:sectanchors:
+////
+    To turn section titles into links, enable the sectlinks attribute.
+    sectanchors attribute overrides sectlinks
+////
+:sectlinks:
+////
+   toc attribute creates a table of contents panel.
+   Here value left indicates that the panel will be positioned to the left of the documents content
+////
+:toc: left
+// Sets the title of table of contents panel. When no toc-title is specified, title is simply "Table of Contents"
+:toc-title: This will be the table of content's title
+// By default, the TOC will display level 1 and level 2 section titles. You can set a different level with the toclevels attribute
+:toclevels: 5
+// enable syntax highlighting in a document, see example below
+:source-highlighter: highlightjs
+
+= This is the document header and it is Level 0
+// The html5 and docbook converters can render documents with multiple authors. Multiple authors and their emails are separated by semicolons (;) when they’re listed on the same line.
+First Author <first@example.com> ; Second Author <second@example.com>
+
+// A section title represents the heading for a section. Section title levels are specified by two to six equal signs.
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+Now I am defining a link link:/actualLink[whatTheReaderWillSee]
+
+Syntax highlighting example
+
+[[app-listing]]
+[source,java]
+.Main.java
+----
+public class Main {
+    public static void main(String[] args){
+        System.out.println("Hello World");
+    }
+}
+----
+
+=== Including Spring RestDocs snippets with include macro
+
+Here is the curl command
+
+// Below we see the {snippets} attribute, we declare this inside maven asciidoc plugin 'attributes' section in pom.xml
+// This is the location of Spring RestDocs generated snippets
+include::{snippets}/get-user/curl-request.adoc[]
+
+The actual HTTP Request
+
+include::{snippets}/get-user/http-request.adoc[]
+
+Server's response
+
+include::{snippets}/get-user/http-response.adoc[]
+
+The response object has the following fields
+
+include::{snippets}/get-user/response-fields.adoc[]

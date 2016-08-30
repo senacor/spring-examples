@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+# use local file system
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: config-repo # if search locations is not given it is the same as Spring boot
+#                                        # i.e. [classpath:/, classpath:/config, file:./, file:./config] e.g. for files => file:\\\C:\Users\fsubasi\Desktop\config-repo\
+#  profiles:
+#    active: native # 'native' profile in the Config Server doesn't use Git, but just loads the config files
+                   # from the local classpath or file system
+
+# use git
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sullafelix/config-repo
+          # searchPaths: foo,bar*  => search foo and any subdirectory that begins with bar for config files (example in infrastructure-configserver bootstrap.yml file)
+
+
+
