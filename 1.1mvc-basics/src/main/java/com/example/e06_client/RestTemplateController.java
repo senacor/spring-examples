@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by fsubasi on 17.02.2016.
  *
- * RestTemplate demonstration. Look at tests for detailed information
+ * RestTemplate demonstration to invoke rest endpoints.
  * ApplicationListener is used to get current port number not related to the example
  */
 
@@ -29,15 +29,16 @@ public class RestTemplateController implements ApplicationListener<EmbeddedServl
 
     RestTemplate restTemplate = new RestTemplate();
 
-    @RequestMapping("/getForObjectWithURI")
+    @RequestMapping("/getForObject")
     public String getForObjectWithURI() {
-        URI uri = URI.create("http://localhost:" + port + "/requestMapping");
+        URI uri = URI.create("http://localhost:" + port + "/basics/helloWorldRest");
 
         return restTemplate.getForObject(uri, // server url
                 String.class // an object of type String is expected
         );
     }
-    @RequestMapping("/getForObjectWithStringAndMap")
+
+    @RequestMapping("/getForObjectWithParam")
     public String getForObjectWithStringAndMap(){
         Map<String, String> templateParams = new HashMap<>();
         templateParams.put("parameter", "myParameter"); // placeholder and its value
@@ -47,7 +48,7 @@ public class RestTemplateController implements ApplicationListener<EmbeddedServl
                         templateParams);
     }
 
-    @RequestMapping("/postForObjectWithStringVarargs")
+    @RequestMapping("/postForObject")
     public String postForObjectWithStringVarargs(){
         return restTemplate.postForObject("http://localhost:{port}/mapping",
                 "1234567890", String.class, port);

@@ -1,7 +1,6 @@
 package com.example.e06_client;
 
 import com.Application;
-
 import com.common.model.User;
 import com.common.response.UserResponse;
 import org.hamcrest.beans.SamePropertyValuesAs;
@@ -21,21 +20,13 @@ import org.springframework.web.client.RestTemplate;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebIntegrationTest(randomPort = true)
 @SpringApplicationConfiguration(classes = {Application.class})
-public class RestTemplateOtherMethodsTest {
+public class RestTemplateExchangeTest {
     RestTemplate restTemplate = new RestTemplate();
 
     // Discover the HTTP port at runtime
     @Value("${local.server.port}")
     int port;
 
-    @Test
-    public void testPostForObjectWithStringVarargs(){
-        String response = restTemplate.postForObject("http://localhost:{port}/mapping",
-                "1234567890", String.class, port);
-
-        Assert.assertNotNull(response);
-        Assert.assertEquals(response, "1234567890");
-    }
 
     // Setting request headers with HttpEntity
     // We can get the response headers from ResponseEntity

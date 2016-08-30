@@ -24,7 +24,7 @@ import java.util.Map;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebIntegrationTest(randomPort = true)
 @SpringApplicationConfiguration(classes = {Application.class})
-public class RestTemplateTest {
+public class RestTemplateGetTest {
     // Reduces boilerplate of java.net.HttpUrlConnection
     // uses HttpMessageConverters to convert response into Java object
     RestTemplate restTemplate = new RestTemplate();
