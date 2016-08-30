@@ -1,4 +1,4 @@
-package com.example.e02_requestmapping;
+package com.example.e03_requestmapping;
 
 import com.Application;
 import org.junit.Before;
@@ -35,41 +35,47 @@ public class RequestMappingDemoControllerTest {
     }
 
     @Test
-    public void requestMappingDemoGET_Test() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/requestMapping"))
-                .andExpect(MockMvcResultMatchers.content().string("Hello World!"));
+    public void thatPathVariableIsMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/mapping/pathVariable/myParameter"))
+                .andExpect(MockMvcResultMatchers.content().string("Parameter is myParameter"));
     }
 
     @Test
-    public void requestMappingDemoGETWithQueryParamsTest() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/requestMapping/queryParams")
+    public void thatWrongPathVariableWithRegexIsNotMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/mapping/pathVariableWithRegex/myParameter"))
+                .andExpect(MockMvcResultMatchers.content().string("")); // should not return anything since regex rejects non-decimal
+    }
+
+    @Test
+    public void thatPathVariableWithRegexIsMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/mapping/pathVariableWithRegex/2"))
+                .andExpect(MockMvcResultMatchers.content().string("Numerical parameter is 2"));
+    }
+
+
+    @Test
+    public void thatQueryParamIsMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/mapping/queryParam")
                 .param("name", "john"))
                 .andExpect(MockMvcResultMatchers.content().string("Hello john"));
     }
 
     @Test
-    public void requestMappingDemoGETWithTemplateParamsTest() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/requestMapping/templateParams/myParameter"))
-                .andExpect(MockMvcResultMatchers.content().string("Parameter is myParameter"));
+    public void thatRequiredQueryParamIsMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/mapping/requiredQueryParams")
+                .param("name", "john"))
+                .andExpect(MockMvcResultMatchers.content().string("Hello john"));
     }
 
     @Test
-    public void requestMappingDemoGETWithTemplateParamsRegexTest() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/requestMapping/templateParams/regex/myParameter"))
-                .andExpect(MockMvcResultMatchers.content().string("")); // should not return anything since regex rejects non-decimal
-        mockMvc.perform(MockMvcRequestBuilders.get("/requestMapping/templateParams/regex/2"))
-                .andExpect(MockMvcResultMatchers.content().string("Numerical parameter is 2"));
-    }
-
-    @Test
-    public void requestMappingDemoGETWithMatrixVariableTest() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get(("/requestMapping/hotel/34;floor=45;room=3/guest")))
+    public void thatMatrixVariableIsMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get(("/mapping/hotel/34;floor=45;room=3/guest")))
                 .andExpect(MockMvcResultMatchers.content().string("Hotel ID: 34<br/>Floor Number: 45<br/>Room Number: 3"));
     }
-   
+
     @Test
-    public void requestMappingDemoFormPOST() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.post("/requestMapping/form")
+    public void thatFormPOSTisMapped() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.post("/mapping/form")
                 .param("user", "user1")
                 .param("email", "email@example.com")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED))
