@@ -1,7 +1,6 @@
 package com.exercise;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import com.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpHeaders;
