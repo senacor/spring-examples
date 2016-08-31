@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.senacor.tecco.ilms.katas</groupId>
-	<artifactId>mvc-basic</artifactId>
+	<artifactId>mvc-rest</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mvc-basics</name>
+	<name>mvc-rest</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

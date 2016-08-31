@@ -1,4 +1,4 @@
-package com.senacor.tecco.ilms.katas.views.e01_modelAndView;
+package com.senacor.tecco.ilms.katas.views.e01_viewmodel;
 
 import com.senacor.tecco.ilms.katas.views.Application;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class ModelAndViewControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
         mockMvc.perform(MockMvcRequestBuilders.get("/modelAndView"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("viewDemo"))
+                .andExpect(MockMvcResultMatchers.view().name("viewTemplate"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("user", "email"))
                 .andExpect(MockMvcResultMatchers.model().attribute("user", "john"))
                 .andExpect(MockMvcResultMatchers.model().attribute("email", "john@example.com"));

@@ -1,4 +1,4 @@
-package com.senacor.tecco.ilms.katas.views.e02_viewString;
+package com.senacor.tecco.ilms.katas.views.e02_viewname;
 
 import com.senacor.tecco.ilms.katas.views.Application;
 import org.junit.Test;
@@ -20,9 +20,9 @@ public class ViewNameControllerTest {
     public void stringViewNameDemoTest() throws Exception{
         ViewNameController controller = new ViewNameController();
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-        mockMvc.perform(MockMvcRequestBuilders.get("/viewName"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/modelWithViewName"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("viewDemo"))
+                .andExpect(MockMvcResultMatchers.view().name("viewTemplate"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("user", "email"))
                 .andExpect(MockMvcResultMatchers.model().attribute("user", "john"))
                 .andExpect(MockMvcResultMatchers.model().attribute("email", "john@example.com"));

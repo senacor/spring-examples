@@ -2,7 +2,7 @@ package com.senacor.tecco.ilms.katas.example.e03_global;
 /*
 import com.common.exceptions.ErrorMessageComposer;
 import com.common.response.BaseResponse;
-import com.example.e02_method.UserNotFoundException;
+import com.senacor.tecco.ilms.katas.e02_method.UserNotFoundException;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

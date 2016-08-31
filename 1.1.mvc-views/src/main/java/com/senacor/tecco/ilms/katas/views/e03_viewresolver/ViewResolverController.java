@@ -9,13 +9,25 @@ import java.util.Map;
 
 /**
  * Created by fsubasi on 18.01.2016.
- * We see the configured view resolvers for thymeleaf, json xml, pdf and xls in action
- * This controller serves html, json, xml, pdf and xls representation of a User object
- * Since we enabled path extensions and path parameter for content negotiation
- * to get html, url should be .../views/viewResolver/user.html or .../views/viewResolver/user?format=html
- * to get xml,  url should be .../views/viewResolver/user.xml or .../views/viewResolver/user?format=xml
- * to get json, the same procedure as above, also when there is neither path extension nor query parameter
- * it serves json since the default content type is configured to be json in CustomViewConfig class
+ *
+ * This example shows the view resolvers for thymeleaf, json xml, pdf and xls in action.
+ * See CustomMvcConfiguration for content negotiation configuration.
+ * This controller serves html, json, xml, pdf and xls representation
+ * of an user object.
+ *
+ * When receiving a new request, Spring will use the “Accept” header, path extension (suffix)
+ * or URL parameter "format" to determine the media type that it needs to respond with:
+ * - Http-Header: Accept:application/xml
+ * - path extension (suffix) in the URL: viewResolver/user.xml
+ * - URL parameter "format": viewResolver/user?format=xml
+ *
+ * It will then try to find an ViewResolver implementation that is capable
+ * of handling specific media type – and it will use it to convert the model
+ * to generate the service response.
+ *
+ * json is configured as the default content type in CustomMvcConfiguration.
+ * Therefore, .../viewResolver/user returns json
+ *
  * Serving json/xml in Spring Boot is easier with HttpMessageConverter's as they come out of box.
  * In order to serve json/xml with views we have to add custom views and custom view resolvers that
  * resolve to these views.
@@ -25,9 +37,9 @@ import java.util.Map;
 @RequestMapping("/viewResolver")
 public class ViewResolverController {
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "user", method = RequestMethod.GET)
     public String viewResolverDemo(Map<String, Object> model){
         model.put("user", User.createUser()); // key not important when serving xml or json
-        return "multipleRepresentations"; // view name not necessary when serving json or xml
+        return "viewResolverTemplate"; // view name not necessary when serving json or xml
     }
 }

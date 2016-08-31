@@ -1,4 +1,4 @@
-package com.senacor.tecco.ilms.katas.views.e03_viewresolver;
+package com.senacor.tecco.ilms.katas.views;
 
 import com.senacor.tecco.ilms.katas.views.User;
 import com.senacor.tecco.ilms.katas.views.e03_viewresolver.e01_json.JacksonViewResolver;

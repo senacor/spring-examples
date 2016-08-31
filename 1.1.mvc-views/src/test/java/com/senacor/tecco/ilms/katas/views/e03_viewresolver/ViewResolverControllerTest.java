@@ -23,9 +23,9 @@ public class ViewResolverControllerTest {
     public void viewResolverDemoTest() throws Exception{
         ViewResolverController controller = new ViewResolverController();
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-        mockMvc.perform(MockMvcRequestBuilders.get("/viewResolver"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/viewResolver/user"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("multipleRepresentations"));
+                .andExpect(MockMvcResultMatchers.view().name("viewResolverTemplate"));
                 /*
                 .andExpect(MockMvcResultMatchers.content().string(
                         CoreMatchers.containsString("<p>First Name: <span>John</span></p>")));*/

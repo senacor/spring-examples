@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * There are three possibilities to define the required response type
  * - Http-Header: Accept:application/xml
  * - path extension (suffix) in the URL: negotiation/user.xml
- * - URL parameter format: negotiation/user?format=xml (disabled by default)
+ * - URL parameter "format": negotiation/user?format=xml (disabled by default)
  *
  * See e04_customization to change default behavior
  */
