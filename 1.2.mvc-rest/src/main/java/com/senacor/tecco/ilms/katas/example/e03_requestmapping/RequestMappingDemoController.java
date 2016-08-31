@@ -52,7 +52,7 @@ public class RequestMappingDemoController {
     }
 
     // Complex path variables with @MatrixVariable in GET Requests:
-    // RequestMappingHanderMapping must be configured for this to work. See com.example.MyPostProcessor class
+    // RequestMappingHanderMapping must be configured for this to work. See com.senacor.tecco.ilms.katas.MyPostProcessor class
     // An example call with matrix variables /requestMapping/hotel/34;floor=45;room=3/guest
     @RequestMapping(value="hotel/{hotelId}/guest", method = RequestMethod.GET)
     public String matrixVariableMapping(@PathVariable("hotelId") long hotelId,
