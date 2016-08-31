@@ -1,10 +1,11 @@
-package com.example.e03_configurationproperties;
+package com.example.e02_configurationproperties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Created by fsubasi on 13.01.2016
- * Here we see how a bean of class User is instantiated with data from external configuration
- * using @ConfigurationProperties
+ *
+ * A bean of class User is instantiated with data from
+ * external configuration using @ConfigurationProperties
  */
 @ConfigurationProperties("user")
 public class User {
@@ -36,11 +37,12 @@ public class User {
         this.email = email;
     }
 
-    public static User createUser(){
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setEmail("johndoe@example.com");
-        return user;
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

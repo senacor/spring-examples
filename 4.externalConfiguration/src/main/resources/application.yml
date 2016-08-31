@@ -3,13 +3,14 @@
 #    profiles:
 #        active: development
 server:
-  port: 80
+  port: 8080
 info: # any properties prefixed with info are displayed in the /info actuator endpoint
     maven:
         group: '@project.groupId@'   # @xxx@ get values from maven properties
         artifact: '@project.artifactId@'
         description: '@project.description@'
         version: '@project.version@'
+
 ---
 spring:
     profiles: development

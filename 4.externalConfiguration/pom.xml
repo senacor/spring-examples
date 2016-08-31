@@ -8,7 +8,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>externalConfiguration</name>
+	<name>configuration</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

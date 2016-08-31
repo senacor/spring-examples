@@ -1,5 +1,8 @@
-package com.example.e01_propertysource;
+package com.example.e03_propertysource;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties("propertySourceUser")
 public class User {
     private String firstName;
     private String lastName;
@@ -29,11 +32,12 @@ public class User {
         this.email = email;
     }
 
-    public static User createUser(){
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setEmail("johndoe@example.com");
-        return user;
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

@@ -1,10 +1,13 @@
-package com.example.e03_configurationproperties;
+package com.example.e03_propertysource;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by fsubasi on 17.02.2016.
+ *
  * Spring Boot will draw properties from the following, in order of precendence
  * 1 Command-line arguments
  * 2 JNDI attributes from java:comp/env
@@ -16,13 +19,16 @@ import org.springframework.context.annotation.Configuration;
  * 8 Property sources specified by @PropertySource
  * 9 Default properties
  */
-@Configuration
-// @EnableConfigurationProperties(User.class) // => can be used to create beans from @ConfigurationProperties annotated classes
-public class ConfigurationPropertiesConfig {
+@RestController
+@RequestMapping("/source")
+public class PropertySourceController {
 
-    // Instead of using @EnableConfigurationProperties, we can specify a bean directly
-    @Bean
-    public User user(){
-        return new User();
+    @Autowired
+    @Qualifier("propertySourceUser")
+    private User user;
+
+    @RequestMapping("/property/user")
+    public User customUser(){
+        return user;
     }
 }

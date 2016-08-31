@@ -1,6 +1,6 @@
 package com.example.e04_profiles;
 
-import com.example.e03_configurationproperties.User;
+import com.example.e02_configurationproperties.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
