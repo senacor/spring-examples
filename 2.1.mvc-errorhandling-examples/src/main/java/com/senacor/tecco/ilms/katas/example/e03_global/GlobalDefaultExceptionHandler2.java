@@ -1,9 +1,7 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
-/*
-import com.common.response.BaseResponse;
-import com.common.response.Message;
-import com.common.response.Severity;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+
+import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
@@ -18,7 +16,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
-*/
+
 /**
  * Created by fsubasi on 17.01.2016
  * Here there are two points. First it shows how ResponseEntityExceptionHandler can be extended and with its
@@ -27,10 +25,16 @@ import javax.servlet.http.HttpServletRequest;
  * methods. A helpful stackoverflow question
  * http://stackoverflow.com/questions/19498378/setting-precedence-of-multiple-controlleradvice-exceptionhandlers
  */
-/*
+
 @ControllerAdvice
-@Order(Ordered.HIGHEST_PRECEDENCE)
+@Order(Ordered.LOWEST_PRECEDENCE)
 public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandler{
+
+    @ExceptionHandler({NumberFormatException.class, NullPointerException.class})
+    @ResponseBody
+    public ResponseEntity<Object> handleRuntimeException(HttpServletRequest request, Exception e) throws Exception{
+        return this.handleExceptionInternal(e, null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+    }
 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
@@ -46,31 +50,9 @@ public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandl
             returnStatus = exResponseStatus.value();
         }
         return new ResponseEntity<>(errorMessage, headers, returnStatus);
-
     }
 
-    @ExceptionHandler({Exception.class})
-    @ResponseBody
-    public ResponseEntity<Object> handleException(HttpServletRequest request, Exception e) throws Exception{
-        return this.handleExceptionInternal(e, null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, null);
-    }
-
-    public BaseResponse createErrorMessage(Exception ex) {
-        BaseResponse output = new BaseResponse();
-        output.set_successful(false);
-        Message message = new Message("unerwartete_exception", Severity.ERROR);
-        System.out.println(ex.getMessage());
-        String msg = ex.getClass().toGenericString().substring(23);
-        msg = msg.replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2");
-        message.setMessage(msg);
-        System.out.println(ex.getClass());
-        // Convert Exception to String to avoid infinite loop in Jackson Serialization
-        message.setDetails(ExceptionUtils.getStackTrace(ex));
-        output.get_messages().add(message);
-        return output;
+    public BaseResponse createErrorMessage(Exception e) {
+        return ErrorMessageComposer.messageComposer(e, "exception_handled_by_global_handler_2");
     }
 }
-*/
-
-
-

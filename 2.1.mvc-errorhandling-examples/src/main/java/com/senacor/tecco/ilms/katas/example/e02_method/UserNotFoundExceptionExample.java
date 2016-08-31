@@ -53,6 +53,6 @@ public class UserNotFoundExceptionExample {
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ResponseBody
     public BaseResponse throwError(UserNotFoundException e){
-        return ErrorMessageComposer.throwException(e, "user_not_found");
+        return ErrorMessageComposer.messageComposer(e, "user_not_found");
     }
 }

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/errorHandling/method")
 public class ErrorHandlingMethodExample {
 
-    @RequestMapping(value = "throwException")
+    @RequestMapping(value = "messageComposer")
     @ResponseBody
     public String throwException(){
         throw new IllegalArgumentException("¯\\_(ツ)_/¯");
@@ -33,6 +33,6 @@ public class ErrorHandlingMethodExample {
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ResponseBody
     public BaseResponse throwError(IllegalArgumentException e){
-        return ErrorMessageComposer.throwException(e, "illegal_argument_exception");
+        return ErrorMessageComposer.messageComposer(e, "illegal_argument_exception");
     }
 }
