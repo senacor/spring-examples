@@ -1,8 +1,5 @@
-package com.senacor.tecco.ilms.katas.common.exceptions;
+package com.senacor.tecco.ilms.katas.common.response;
 
-import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
-import com.senacor.tecco.ilms.katas.common.response.Message;
-import com.senacor.tecco.ilms.katas.common.response.Severity;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 /**

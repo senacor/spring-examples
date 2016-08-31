@@ -1,11 +1,10 @@
 package com.senacor.tecco.ilms.katas.example.e04_errorattributes;
-/*
+
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Map;
-*/
+
 /**
  * Created by fsubasi on 19.01.2016.
  */
@@ -18,7 +17,7 @@ import java.util.Map;
  * the error to the user or log the error. Attributes can be added/removed.
  * A bean of type MyErrorAttributes is defined in ErrorHandlingConfig
  */
-/*
+
 public class MyErrorAttributes extends DefaultErrorAttributes {
 
     public static final String EXCEPTION_INSTANCE_ATTRIBUTE_NAME = "exceptionInstance";
@@ -29,4 +28,3 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
         return errorAttributes;
     }
 }
-*/

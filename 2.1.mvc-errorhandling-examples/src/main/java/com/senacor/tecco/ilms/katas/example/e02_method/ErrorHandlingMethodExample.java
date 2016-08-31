@@ -1,6 +1,6 @@
 package com.senacor.tecco.ilms.katas.example.e02_method;
 
-import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.response.ErrorMessageComposer;
 import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by fsubasi on 05.01.2016.
+ *
+ * It's possible to add extra (@ExceptionHandler) methods to any controller to specifically
+ * handle exceptions thrown by request handling (@RequestMapping) methods in the same controller
+ * These (@ExceptionHandler) methods take precedence over other exception handlers (for example,
+ * over global exception controllers)
+ *
  * In this example we throw an IllegalArgumentException and observe that it is intercepted
  * by the @ExceptionHandler annotated method in this controller.
  */

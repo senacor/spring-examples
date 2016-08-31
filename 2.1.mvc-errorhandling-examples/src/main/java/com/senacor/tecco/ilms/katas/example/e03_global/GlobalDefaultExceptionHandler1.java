@@ -1,6 +1,6 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
 
-import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.response.ErrorMessageComposer;
 import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by fsubasi on 17.02.2016.
- * In this example there are two GlobalDefaultExceptionHandlers. They both have an @ExceptionHandler annotated method
- * but the one with the higher precendence will win and handle the exception.
+ *
+ * This GlobalDefaultExceptionHandler handles NullPointerExceptions
+ * In the case of a conflict, this controller has the hightest precedence and it's exception handler will
+ * be priorized over the other ones
  */
 
 @ControllerAdvice

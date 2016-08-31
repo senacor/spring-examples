@@ -1,6 +1,6 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
 
-import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.response.ErrorMessageComposer;
 import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -19,11 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by fsubasi on 17.01.2016
- * Here there are two points. First it shows how ResponseEntityExceptionHandler can be extended and with its
- * handleExceptionInternal method we can get the HttpStatus of some of the standard spring MVC exception.(shown below)
- * The second point is @Order annotation and how it can be used to override behavior of other @ControllerAdvice annotated
- * methods. A helpful stackoverflow question
- * http://stackoverflow.com/questions/19498378/setting-precedence-of-multiple-controlleradvice-exceptionhandlers
+ *
+ * There are two important observations in this example:
+ * 1) It shows how ResponseEntityExceptionHandler can be extended and with its handleExceptionInternal
+ * method we can get the HttpStatus of some of the standard spring MVC exception.
+ * 2) This global exception handler handles NumberFormatException and NullPointerExceptions. Since the other
+ * controller handles NullPointerExceptions too and has a higher priority, the method in this exception handler
+ * will never be executed
  */
 
 @ControllerAdvice
