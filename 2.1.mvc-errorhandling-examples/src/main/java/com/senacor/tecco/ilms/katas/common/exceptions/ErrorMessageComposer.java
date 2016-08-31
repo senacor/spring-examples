@@ -10,7 +10,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
  */
 public class ErrorMessageComposer {
 
-    public static BaseResponse throwException(Exception e, String textOfMessage){
+    public static BaseResponse messageComposer(Exception e, String textOfMessage){
         BaseResponse output = new BaseResponse();
         output.set_successful(false);
         Message message = new Message(textOfMessage, Severity.ERROR);
