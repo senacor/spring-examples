@@ -5,11 +5,11 @@
 	<!-- first mvn install then mvn spring-boot:run -->
 
 	<groupId>com.senacor.tecco.ilms.katas</groupId>
-	<artifactId>3.2swaggerSpringfox</artifactId>
+	<artifactId>swaggerSpringfox</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>3.2swaggerSpringfox</name>
+	<name>swaggerSpringfox</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

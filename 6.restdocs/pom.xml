@@ -5,11 +5,11 @@
 	<!-- first mvn install then mvn spring-boot:run -->
 
 	<groupId>com.senacor.tecco.ilms.katas</groupId>
-	<artifactId>3restdocs</artifactId>
+	<artifactId>restdocs</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>3restdocs</name>
+	<name>restdocs</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
