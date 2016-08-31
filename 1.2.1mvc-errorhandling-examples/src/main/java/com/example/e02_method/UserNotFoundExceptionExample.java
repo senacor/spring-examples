@@ -1,20 +1,14 @@
 package com.example.e02_method;
 
-import com.common.exceptions.ExceptionThrower;
-import com.common.exceptions.UserNotFoundException;
+import com.common.exceptions.ErrorMessageComposer;
 import com.common.response.BaseResponse;
 import com.common.model.User;
 import com.common.service.UserService;
-import com.common.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
 
 /**
  * Created by amishra on 10.03.16.
@@ -59,42 +53,6 @@ public class UserNotFoundExceptionExample {
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ResponseBody
     public BaseResponse throwError(UserNotFoundException e){
-        return ExceptionThrower.throwException(e, "user_not_found");
-    }
-
-    /**********************************************************************
-     *
-     * POST
-     *
-     *********************************************************************/
-
-    @RequestMapping(value = "", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public ResponseEntity<BaseResponse> saveUsers(@RequestBody User user){
-        //System.out.println("inside Controller");
-        User user1 = userB.saveUser(user);
-        UserResponse userResponse = new UserResponse(user1);
-        HttpHeaders headers = new HttpHeaders();
-        String location = "http://localhost/user/"+ Integer.toString(user1.getUserId());
-        URI locationUri = URI.create(location);
-        headers.setLocation(locationUri);
-        ResponseEntity<BaseResponse> responseEntity = new ResponseEntity<>(userResponse, headers, HttpStatus.CREATED);
-        return responseEntity;
-    }
-
-
-    /**********************************************************************
-     *
-     * PUT
-     *
-     *********************************************************************/
-
-    @RequestMapping(value = "", method = RequestMethod.PUT)
-    @ResponseBody
-    public String putUser(@RequestBody User user) {
-
-        userB.updateUser(user);
-        String response = "The details have been updated for the user with id : " + Integer.toString(user.getUserId());
-        return response;
+        return ErrorMessageComposer.throwException(e, "user_not_found");
     }
 }

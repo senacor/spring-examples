@@ -1,10 +1,8 @@
-/*
-
 package com.example.e03_global;
-
-import com.common.BaseResponse;
-import com.common.Message;
-import com.common.Severity;
+/*
+import com.common.response.BaseResponse;
+import com.common.response.Message;
+import com.common.response.Severity;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -20,8 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
-
-
 */
 /**
  * Created by fsubasi on 17.01.2016
@@ -30,9 +26,8 @@ import javax.servlet.http.HttpServletRequest;
  * The second point is @Order annotation and how it can be used to override behavior of other @ControllerAdvice annotated
  * methods. A helpful stackoverflow question
  * http://stackoverflow.com/questions/19498378/setting-precedence-of-multiple-controlleradvice-exceptionhandlers
- *//*
-
-
+ */
+/*
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandler{
@@ -75,26 +70,7 @@ public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandl
         return output;
     }
 }
-
-
-
 */
-/**
- * SPRING MVC EXCEPTIONS
- * ===================================================================
- * BindException                           400 - Bad Request
- * ConversionNotSupportedException         500 - Internal Server Error
- * HttpMediaTypeNotAcceptableException     406 - Not Acceptable
- * HttpMediaTypeNotSupportedException      415 - Unsupported Media Type
- * HttpMessageNotReadableException         400 - Bad Request
- * HttpMessageNotWritableException         500 - Internal Server Error
- * HttpRequestMethodNotSupportedException  405 - Method Not Allowed
- * MethodArgumentNotValidException         400 - Bad Request
- * MissingServletRequestParameterException 400 - Bad Request
- * MissingServletRequestPartException      400 - Bad Request
- * NoSuchRequestHandlingMethodException    404 - Not Found
- * TypeMismatchException                   400 - Bad Request
- *//*
 
 
-*/
+

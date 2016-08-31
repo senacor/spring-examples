@@ -1,10 +1,8 @@
 package com.example.e03_global;
-
+/*
+import com.common.exceptions.ErrorMessageComposer;
 import com.common.response.BaseResponse;
-import com.common.response.Message;
-import com.common.response.Severity;
-import com.common.exceptions.UserNotFoundException;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.example.e02_method.UserNotFoundException;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-
-
-
+*/
 /**
  * Created by fsubasi on 17.02.2016.
  * In this example there are two GlobalDefaultExceptionHandlers. They both have an @ExceptionHandler annotated method
  * but the one with the higher precendence will win and handle the exception.
  */
-
-
-
+/*
 @ControllerAdvice
 @Order(10)
 public class GlobalDefaultExceptionHandler1 {
@@ -35,19 +29,8 @@ public class GlobalDefaultExceptionHandler1 {
         return new ResponseEntity<Object>(createErrorMessage(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-
-    public BaseResponse createErrorMessage(Exception ex) {
-        BaseResponse output = new BaseResponse();
-        output.set_successful(false);
-        Message message = new Message("unexpected_exception", Severity.ERROR);
-        message.setMessage(ex.getMessage());
-        message.setDetails(ExceptionUtils.getStackTrace(ex));
-        output.get_messages().add(message);
-        return output;
+    public BaseResponse createErrorMessage(Exception e) {
+        return ErrorMessageComposer.throwException(e, "unexpected_exception");
     }
-
-
 }
-
-
-
+*/

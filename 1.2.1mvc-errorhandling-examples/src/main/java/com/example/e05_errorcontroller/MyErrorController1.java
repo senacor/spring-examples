@@ -1,7 +1,6 @@
-/*
-
 package com.example.e05_errorcontroller;
 
+/*
 import com.common.BaseResponse;
 import com.common.UserResponse;
 import com.example.e03_global.GlobalDefaultExceptionHandler1;

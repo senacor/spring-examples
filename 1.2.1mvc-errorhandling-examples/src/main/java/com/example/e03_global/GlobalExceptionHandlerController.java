@@ -1,14 +1,15 @@
 package com.example.e03_global;
-
+/*
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+*/
 /**
  * Created by fsubasi on 17.01.2016
  * In this controller, we throw a RuntimeException and a NullPointerException.
  * Here we observe that different exceptions are being intercepted by their corresponding @ExceptionHandler's
  * in our global exception handler, where error responses can be customized for exception type in question.
  */
+/*
 @Controller
 @RequestMapping("/errorHandling/global")
 public class GlobalExceptionHandlerController {
@@ -23,3 +24,4 @@ public class GlobalExceptionHandlerController {
         throw new NullPointerException();
     }
 }
+*/

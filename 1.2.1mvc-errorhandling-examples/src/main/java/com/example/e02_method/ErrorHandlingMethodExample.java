@@ -1,6 +1,6 @@
 package com.example.e02_method;
 
-import com.common.exceptions.ExceptionThrower;
+import com.common.exceptions.ErrorMessageComposer;
 import com.common.response.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * In this example we throw an IllegalArgumentException and observe that it is intercepted
  * by the @ExceptionHandler annotated method in this controller.
  */
+
 @Controller
 @RequestMapping("/errorHandling/method")
 public class ErrorHandlingMethodExample {
@@ -32,6 +33,6 @@ public class ErrorHandlingMethodExample {
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ResponseBody
     public BaseResponse throwError(IllegalArgumentException e){
-        return ExceptionThrower.throwException(e, "illegal_argument_exception");
+        return ErrorMessageComposer.throwException(e, "illegal_argument_exception");
     }
 }

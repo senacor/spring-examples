@@ -10,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 /**
  * Created by fsubasi on 19.01.2016.
@@ -26,6 +23,7 @@ import java.util.Map;
  *
  * COMMENTED OUT TO STOP INTERFERING IN OTHER PARTS OF THE APPLICATION
  */
+/*
 @Controller
 public class MyErrorController implements ErrorController {
     @Value("${server.error.path:/error}")
@@ -58,5 +56,4 @@ public class MyErrorController implements ErrorController {
         error.setMessage(HttpStatus.valueOf(errorCode).getReasonPhrase());
         return error;
     }
-
-}
+*/

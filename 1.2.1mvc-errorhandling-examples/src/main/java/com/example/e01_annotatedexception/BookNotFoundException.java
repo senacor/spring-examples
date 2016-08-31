@@ -1,4 +1,4 @@
-package com.common.exceptions;
+package com.example.e01_annotatedexception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Custom exceptions can be annotated with @ResponseStatus to respond
  * with the specified HTTP response status and message
  */
-@ResponseStatus(value= HttpStatus.NOT_FOUND, reason = "Book not found.") // 404
+@ResponseStatus(value= HttpStatus.NOT_FOUND, reason = "The book was not found") // 404
 public class BookNotFoundException extends RuntimeException {
-
+    private static final long serialVersionUID = 1209203L;
 }

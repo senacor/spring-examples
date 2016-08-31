@@ -1,4 +1,4 @@
-package com.common.exceptions;
+package com.example.e02_method;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * Created by amishra on 10.03.2016.
  */
+
 @ResponseStatus(value= HttpStatus.NOT_FOUND, reason = "User not found.")
 public class UserNotFoundException extends RuntimeException {
 
