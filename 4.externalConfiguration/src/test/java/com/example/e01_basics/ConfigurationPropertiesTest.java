@@ -31,9 +31,9 @@ public class ConfigurationPropertiesTest {
 
     @Test
     public void testPerson(){
-        Assert.assertEquals(user.getFirstName(), "Samwise");
-        Assert.assertEquals(user.getLastName(), "Gamgee");
-        Assert.assertEquals(user.getEmail(), "sgamgee@shire.com");
+        Assert.assertEquals(user.getFirstName(), "Michael");
+        Assert.assertEquals(user.getLastName(), "Menzel");
+        Assert.assertEquals(user.getEmail(), "michael.menzel@senacor.com");
     }
 
     @Test
@@ -43,9 +43,8 @@ public class ConfigurationPropertiesTest {
 
     @Test
     public void testEnvironment(){
-        Assert.assertEquals("bella", environment.getProperty("cat.name"));
-        Assert.assertEquals("Peregrin", environment.getProperty("firstName"));
-        Assert.assertEquals("Took", environment.getProperty("lastName"));
-        Assert.assertEquals("ptook@shire.com", environment.getProperty("email"));
+        Assert.assertEquals("Michael", environment.getProperty("e02user.firstName"));
+        Assert.assertEquals("Menzel", environment.getProperty("e02user.lastName"));
+        Assert.assertEquals("michael.menzel@senacor.com", environment.getProperty("e02user.email"));
     }
 }

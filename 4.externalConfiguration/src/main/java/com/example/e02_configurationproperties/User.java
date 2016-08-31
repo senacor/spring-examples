@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * A bean of class User is instantiated with data from
  * external configuration using @ConfigurationProperties
  */
-@ConfigurationProperties("user")
+@ConfigurationProperties("e02user")
 public class User {
     private String firstName;
     private String lastName;

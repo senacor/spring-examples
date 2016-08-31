@@ -1,9 +1,14 @@
-# Instead of using profile specific file, with yaml we have the possibility of creating a multi-profile file
+# Spring will load properties from application.yml and application.properties
+# In a project you would use application.yml OR application.properties
+# If a profile is activated, it will load properties from application-<profile>.yml as well
+
 #spring:
 #    profiles:
 #        active: development
+
 server:
   port: 8080
+
 info: # any properties prefixed with info are displayed in the /info actuator endpoint
     maven:
         group: '@project.groupId@'   # @xxx@ get values from maven properties
@@ -11,13 +16,16 @@ info: # any properties prefixed with info are displayed in the /info actuator en
         description: '@project.description@'
         version: '@project.version@'
 
+# Instead of using profile specific files (application-development.yml),
+# we have the possibility of creating a multi-profile file
 ---
 spring:
     profiles: development
 
 server:
     port: 1111
-user:
+
+e02user:
     firstName: developmentName
     lastName: developmentLastName
     email: developmentEmail
