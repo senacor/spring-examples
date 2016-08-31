@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  *   returns the corresponding Java entity
  * - Spring then uses one of the Jackson message converters to marshall the entities to json
  *
- * There are three possibilities to define the rquired response type
+ * There are three possibilities to define the required response type
  * - Http-Header: Accept:application/xml
  * - path extension (suffix) in the URL: negotiation/user.xml
  * - URL parameter format: negotiation/user?format=xml (disabled by default)
