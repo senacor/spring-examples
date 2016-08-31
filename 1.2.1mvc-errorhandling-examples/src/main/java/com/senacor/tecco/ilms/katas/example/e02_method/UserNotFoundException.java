@@ -1,4 +1,4 @@
-package com.example.e02_method;
+package com.senacor.tecco.ilms.katas.example.e02_method;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

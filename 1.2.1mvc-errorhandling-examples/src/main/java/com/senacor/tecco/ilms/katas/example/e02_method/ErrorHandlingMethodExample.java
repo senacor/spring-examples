@@ -1,7 +1,7 @@
-package com.example.e02_method;
+package com.senacor.tecco.ilms.katas.example.e02_method;
 
-import com.common.exceptions.ErrorMessageComposer;
-import com.common.response.BaseResponse;
+import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;

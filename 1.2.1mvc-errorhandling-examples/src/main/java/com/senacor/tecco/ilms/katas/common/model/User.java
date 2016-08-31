@@ -1,7 +1,6 @@
 package com.senacor.tecco.ilms.katas.common.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.HashMap;
 
 /**
  * Created by fsubasi on 18.01.2016.

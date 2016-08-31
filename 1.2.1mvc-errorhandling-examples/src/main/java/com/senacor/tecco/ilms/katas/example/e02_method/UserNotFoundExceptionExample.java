@@ -1,9 +1,9 @@
-package com.example.e02_method;
+package com.senacor.tecco.ilms.katas.example.e02_method;
 
-import com.common.exceptions.ErrorMessageComposer;
-import com.common.response.BaseResponse;
-import com.common.model.User;
-import com.common.service.UserService;
+import com.senacor.tecco.ilms.katas.common.exceptions.ErrorMessageComposer;
+import com.senacor.tecco.ilms.katas.common.model.User;
+import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
+import com.senacor.tecco.ilms.katas.common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;

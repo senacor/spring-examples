@@ -1,17 +1,5 @@
 package com.senacor.tecco.ilms.katas.example.e05_errorcontroller;
 
-import com.senacor.tecco.ilms.katas.common.MyError;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * Created by fsubasi on 19.01.2016.
  * In order to intercept internal requests to error page, marker interface 'ErrorController' must be implemented,
