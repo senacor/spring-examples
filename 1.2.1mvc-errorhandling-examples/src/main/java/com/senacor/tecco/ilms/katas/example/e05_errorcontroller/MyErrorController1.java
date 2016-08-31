@@ -1,4 +1,4 @@
-package com.example.e05_errorcontroller;
+package com.senacor.tecco.ilms.katas.example.e05_errorcontroller;
 
 /*
 import com.common.BaseResponse;

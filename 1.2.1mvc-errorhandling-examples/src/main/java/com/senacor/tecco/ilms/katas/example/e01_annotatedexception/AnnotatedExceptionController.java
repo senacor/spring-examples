@@ -1,4 +1,4 @@
-package com.example.e01_annotatedexception;
+package com.senacor.tecco.ilms.katas.example.e01_annotatedexception;
 
 import com.senacor.tecco.ilms.katas.example.e01_annotatedexception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

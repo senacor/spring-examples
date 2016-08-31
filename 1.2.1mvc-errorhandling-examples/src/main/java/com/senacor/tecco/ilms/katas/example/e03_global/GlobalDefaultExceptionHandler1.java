@@ -1,4 +1,4 @@
-package com.example.e03_global;
+package com.senacor.tecco.ilms.katas.example.e03_global;
 /*
 import com.common.exceptions.ErrorMessageComposer;
 import com.common.response.BaseResponse;

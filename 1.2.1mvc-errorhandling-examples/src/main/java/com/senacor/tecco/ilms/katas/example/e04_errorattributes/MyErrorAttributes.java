@@ -1,4 +1,4 @@
-package com.example.e04_errorattributes;
+package com.senacor.tecco.ilms.katas.example.e04_errorattributes;
 /*
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;
