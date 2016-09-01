@@ -1,7 +1,6 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
 
-import com.senacor.tecco.ilms.katas.common.response.ErrorMessageComposer;
-import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
+import com.senacor.tecco.ilms.katas.common.response.ErrorResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -30,7 +29,7 @@ public class GlobalDefaultExceptionHandler1 {
         return new ResponseEntity<Object>(createErrorMessage(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public BaseResponse createErrorMessage(Exception e) {
-        return ErrorMessageComposer.messageComposer(e, "exception_handled_by_global_handler_1");
+    public ErrorResponse createErrorMessage(Exception e) {
+        return new ErrorResponse("exception_handled_by_global_handler_1", e.getMessage());
     }
 }

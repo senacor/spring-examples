@@ -1,7 +1,6 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
 
-import com.senacor.tecco.ilms.katas.common.response.ErrorMessageComposer;
-import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
+import com.senacor.tecco.ilms.katas.common.response.ErrorResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
@@ -44,7 +43,7 @@ public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandl
         // Set headers
         headers.set("key", "value");
         HttpStatus returnStatus = status != null ? status : HttpStatus.INTERNAL_SERVER_ERROR;
-        BaseResponse errorMessage = createErrorMessage(ex);
+        ErrorResponse errorMessage = createErrorMessage(ex);
 
         // If the custom exception is annotated with @ResponseStatus, use it
         ResponseStatus exResponseStatus = AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class);
@@ -54,7 +53,7 @@ public class GlobalDefaultExceptionHandler2 extends ResponseEntityExceptionHandl
         return new ResponseEntity<>(errorMessage, headers, returnStatus);
     }
 
-    public BaseResponse createErrorMessage(Exception e) {
-        return ErrorMessageComposer.messageComposer(e, "exception_handled_by_global_handler_2");
+    public ErrorResponse createErrorMessage(Exception e) {
+        return new ErrorResponse("exception_handled_by_global_handler_2", e.getMessage());
     }
 }
