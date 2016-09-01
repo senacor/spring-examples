@@ -1,4 +1,4 @@
-package demo.e01_ratelimiter;
+package com.senacor.tecco.ilms.katas.e01_ratelimiter;
 
 /**
  * Created by fsubasi on 04.02.2016.

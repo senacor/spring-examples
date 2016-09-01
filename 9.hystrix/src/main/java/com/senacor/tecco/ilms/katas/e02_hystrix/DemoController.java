@@ -1,4 +1,4 @@
-package demo.e02_hystrix;
+package com.senacor.tecco.ilms.katas.e02_hystrix;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.http.*;

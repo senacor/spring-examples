@@ -1,6 +1,6 @@
-package demo.e02_hystrix;
+package com.senacor.tecco.ilms.katas.e02_hystrix;
 
-import demo.HystrixApplication;
+import com.senacor.tecco.ilms.katas.HystrixApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

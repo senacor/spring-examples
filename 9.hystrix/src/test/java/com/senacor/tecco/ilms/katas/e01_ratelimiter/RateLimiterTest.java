@@ -1,7 +1,7 @@
-package demo.e01_ratelimiter;
+package com.senacor.tecco.ilms.katas.e01_ratelimiter;
 
 import com.google.common.util.concurrent.RateLimiter;
-import demo.HystrixApplication;
+import com.senacor.tecco.ilms.katas.HystrixApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

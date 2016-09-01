@@ -1,4 +1,4 @@
-package com.example;
+package com.senacor.tecco.ilms.katas;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

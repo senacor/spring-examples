@@ -1,4 +1,4 @@
-package demo;
+package com.senacor.tecco.ilms.katas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
