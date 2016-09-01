@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by amishra on 18.03.16.
  */
-public class UserInMemoryDB {
+public class UserService {
 
     static HashMap<Integer,User> userMap = new HashMap<Integer,User>();
 

@@ -2,7 +2,7 @@ package com.example;
 
 import com.common.response.BaseResponse;
 import com.common.model.User;
-import com.common.service.UserInMemoryDB;
+import com.common.service.UserService;
 import com.common.response.UserResponse;
 
 import com.wordnik.swagger.annotations.Api;
@@ -29,11 +29,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 @Api(value="user", description="Resources for user service")
-public class UserService {
+public class UserRestService {
 
-    UserInMemoryDB userDB =new UserInMemoryDB();
+    UserService userDB =new UserService();
 
-    public UserService() {
+    public UserRestService() {
         userDB.initialiseUsers();
     }
 
