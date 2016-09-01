@@ -48,7 +48,7 @@ public class DemoController {
     // 1- post request to /env with "hystrix.command.demoOpenCircuit.circuitBreaker.forceOpen=true" request body
     // in application/x-www-form-urlencoded format to set the property
     // 2- an empty post request to /refresh to refresh the bean
-    // TODO: find a way to refresh the bean without using /refresh endpoint
+    // TODO MM: Das Beispiel entfernen und besser die eigenen Beispiele hier hinzufügen
     @RequestMapping("/openCircuit")
     public String openCircuit(){
         String url = "http://localhost:8080/";
