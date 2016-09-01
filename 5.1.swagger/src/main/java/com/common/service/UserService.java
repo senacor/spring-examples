@@ -1,104 +1,55 @@
 package com.common.service;
 
-import com.common.model.User;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+
+import com.common.model.User;
+import org.springframework.stereotype.Component;
 
 /**
- * Created by amishra on 18.03.16.
+ *
  */
+@Component
 public class UserService {
 
-    static HashMap<Integer,User> userMap = new HashMap<Integer,User>();
+    HashMap<Integer,User> userMap = new HashMap<Integer,User>();
+    AtomicInteger userIdSequence = new AtomicInteger(0);
 
-    public static void initialiseUsers()
-    {
-        User user1 = new User();
-        user1.setUserId(1);
-        user1.setFirstName("Jack");
-        user1.setLastName("Doe");
-        user1.setEmail("jackdoe@example.com");
-        userMap.put(1,user1);
-
-        User user2 = new User();
-        user2.setUserId(2);
-        user2.setFirstName("Brett");
-        user2.setLastName("Lee");
-        user2.setEmail("brettlee@example.com");
-        userMap.put(2,user2);
-
-        User user3 = new User();
-        user3.setUserId(3);
-        user3.setFirstName("Maria");
-        user3.setLastName("Liu");
-        user3.setEmail("marialiu@example.com");
-        userMap.put(3,user3);
-
-        User user4 = new User();
-        user4.setUserId(4);
-        user4.setFirstName("Shane");
-        user4.setLastName("Lee");
-        user4.setEmail("shanelee@example.com");
-        userMap.put(4,user4);
-
-        User user5 = new User();
-        user5.setUserId(5);
-        user5.setFirstName("Sophie");
-        user5.setLastName("West");
-        user5.setEmail("sophiewest@example.com");
-        userMap.put(5,user5);
+    public UserService() {
+        saveUser(new User("Jack", "Doe", "jackdoe@example.com"));
+        saveUser(new User("Brett", "Lee", "brettlee@example.com"));
+        saveUser(new User("Maria", "Liu", "marialiu@example.com"));
+        saveUser(new User("Shane", "Lee", "shanelee@example.com"));
+        saveUser(new User("Sophie", "West", "sophiewest@example.com"));
     }
 
-    public static User createUser(){
-        User user = new User();
-        user.setUserId(123);
-        user.setFirstName("Dummy");
-        user.setLastName("User");
-        user.setEmail("dummyuser@example.com");
+    public User getUserFromID(int uId) {
+        return userMap.get(uId);
+    }
+
+    public List<User> getUsersByLastName(String lastName) {
+        return userMap.values()
+                .stream()
+                .filter(user -> lastName.equals(user.getLastName()))
+                .collect(Collectors.toList());
+    }
+
+    public User saveUser(User user) {
+        int userId = userIdSequence.incrementAndGet();
+        user.setUserId(userId);
+        userMap.put(userId, user);
         return user;
     }
 
-    public User getUserFromID(int uId)
-    {
-        User userx = new User();
-        if(userMap.containsKey(uId)) {
-            userx = userMap.get(uId);
-        }
-        else {
-            throw new IllegalArgumentException("Invalid User Id. Enter an Id between 1-5");
-        }
-        return userx;
-    }
-    public List<User> getUsersByLastName(String lName) {
-        User userx;
-        List<User> userList = new ArrayList<User>();
-        for (int i = 1; i <= userMap.size(); i++) {
-            userx = userMap.get(i);
-            String lastName = userx.getLastName();
-            if (lastName.equals(lName))
-                userList.add(userx);
-        }
-        return userList;
-    }
-
-    public User saveUsers(User user){
-        int uid = userMap.size()+1;
-        user.setUserId(uid);
-        userMap.put(uid, user);
-        return user;
-    }
-
-    public void updateUser(User user)
-    {
-        int uid= user.getUserId();
-        userMap.remove(uid);
+    public User updateUser(User user) {
+        int uid = user.getUserId();
         userMap.put(uid,user);
+        return user;
     }
 
-    public void deleteUser(int uid)
-    {
+    public void deleteUser(int uid) {
         userMap.remove(uid);
     }
 

@@ -34,8 +34,7 @@ public class UserRestService {
     UserService userDB =new UserService();
 
     public UserRestService() {
-        userDB.initialiseUsers();
-    }
+}
 
     /**********************************************************************
      *
@@ -81,7 +80,7 @@ public class UserRestService {
             @ApiResponse(code = 404, message = "User not found")})
     public ResponseEntity<BaseResponse> saveUsers(@ApiParam(value = "Json formulated details for the new user",
             required = true)@RequestBody User user){
-        User user1 = userDB.saveUsers(user);
+        User user1 = userDB.saveUser(user);
         UserResponse userResponse = new UserResponse(user1);
         HttpHeaders headers = new HttpHeaders();
         String location = "http://localhost/user/99"; //+ Integer.toString(user1.getUserId());
