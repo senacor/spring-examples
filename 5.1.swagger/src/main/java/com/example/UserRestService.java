@@ -1,9 +1,9 @@
 package com.example;
 
-import com.common.BaseResponse;
-import com.common.User;
-import com.common.UserInMemoryDB;
-import com.common.UserResponse;
+import com.common.response.BaseResponse;
+import com.common.model.User;
+import com.common.service.UserService;
+import com.common.response.UserResponse;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -29,13 +29,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 @Api(value="user", description="Resources for user service")
-public class UserService {
+public class UserRestService {
 
-    UserInMemoryDB userDB =new UserInMemoryDB();
+    UserService userDB =new UserService();
 
-    public UserService() {
-        userDB.initialiseUsers();
-    }
+    public UserRestService() {
+}
 
     /**********************************************************************
      *
@@ -81,7 +80,7 @@ public class UserService {
             @ApiResponse(code = 404, message = "User not found")})
     public ResponseEntity<BaseResponse> saveUsers(@ApiParam(value = "Json formulated details for the new user",
             required = true)@RequestBody User user){
-        User user1 = userDB.saveUsers(user);
+        User user1 = userDB.saveUser(user);
         UserResponse userResponse = new UserResponse(user1);
         HttpHeaders headers = new HttpHeaders();
         String location = "http://localhost/user/99"; //+ Integer.toString(user1.getUserId());
