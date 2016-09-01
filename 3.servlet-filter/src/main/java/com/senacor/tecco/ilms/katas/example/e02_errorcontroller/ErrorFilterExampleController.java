@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by Michael Menzel on 01.09.2016.
+ * Created by Dr. Michael Menzel, Senacor Technologies AG, 01.09.2016.
  *
- *
+ * These endpoints in this example are filtered by sendErrorFilter and
+ * throwExceptionFilter that send error responses or raise exceptions
+ * to demonstrate the error handling with a custom error controller.
  */
 @RestController
 public class ErrorFilterExampleController {

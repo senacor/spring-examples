@@ -12,14 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fsubasi on 19.01.2016.
- * In order to intercept internal requests to error page, marker interface 'ErrorController' must be implemented,
- * Spring Boot automatically registers the BasicErrorController as a Spring Bean
- * when there is no custom implementation of ErrorController
  *
- * This is also used in common-fsl-service to catch errors not caught by
- * GlobalExceptionHandler with @ControllerAdvice
+ * In order to intercept internal requests to the error page,
+ * the marker interface 'ErrorController' must be implemented.
+ * If no custom implementation of ErrorController is provided,
+ * Spring Boot will register the Spring Bean
+ * BasicErrorController as default implementation automatically
  *
- * COMMENTED OUT TO STOP INTERFERING IN OTHER PARTS OF THE APPLICATION
+ * In general, exception raised in spring controllers should be
+ * caught and handled within a controller advice.
+ *
+ * However, if errors or exceptions are raised in servlet filters,
+ * a redirect to the error controller will occur.
+ *
+ * This simple error controller extracts the message and respond status
+ * from the request attributes
  */
 
 @RestController
@@ -42,10 +49,13 @@ public class CustomErrorController implements ErrorController {
         //get Exception
         Object exception = request.getAttribute("javax.servlet.error.exception");
 
+        //extract information from exception if available
         if(exception instanceof CustomException) {
             CustomException customException = (CustomException) exception;
             message = customException.getMessage();
             statusCode = customException.getResponseStatus();
+        //if no exception occurred, try to extract message and
+        //status from servlet error attributes
         } else {
             message = (String) request.getAttribute("javax.servlet.error.message");
             statusCode = HttpStatus.valueOf((Integer) request.getAttribute("javax.servlet.error.status_code"));

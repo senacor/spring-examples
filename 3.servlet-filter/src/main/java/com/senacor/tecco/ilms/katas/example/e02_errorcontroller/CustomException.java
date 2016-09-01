@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by mmenzel on 01.09.2016.
+ * Created by Dr. Michael Menzel, Senacor Technologies AG, 01.09.2016.
+ *
+ * custom exception that is thrown in the servlet filter
  */
 public class CustomException extends RuntimeException {
     private HttpStatus responseStatus;

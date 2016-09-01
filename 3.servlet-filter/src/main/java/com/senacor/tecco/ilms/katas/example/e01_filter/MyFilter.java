@@ -1,5 +1,5 @@
-
 package com.senacor.tecco.ilms.katas.example.e01_filter;
+
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
@@ -13,13 +13,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EnumSet;
 
 
 /**
  * Created by amishra on 06/04/16.
+ *
+ * This class illustrates the servlet filter definition and registration
+ *
+ * Spring collects all Beans of type FilterRegistrationBean and
+ * uses these beans to setup the filter chain during service startup.
  */
 
 @Component
@@ -40,16 +43,21 @@ public class MyFilter {
         return register;
     }
 
+    //Servlet filter definition
     private class Filter extends OncePerRequestFilter {
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
             log.debug("now filtering");
-            System.out.println("The request is : " + request.getMethod() + " " + request.getRequestURL());
 
+            //handle request
+            log.debug("The request is : " + request.getMethod() + " " + request.getRequestURL());
+
+            //invoke next filter in the chain
             filterChain.doFilter(request, response);
 
-            System.out.println("The response status is : "+ response.getStatus());
+            //handle response
+            log.debug("The response status is : "+ response.getStatus());
         }
 
     }
