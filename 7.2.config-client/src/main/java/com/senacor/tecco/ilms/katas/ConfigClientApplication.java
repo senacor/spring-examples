@@ -1,4 +1,4 @@
-package com.example;
+package com.senacor.tecco.ilms.katas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,14 +17,10 @@ public class ConfigClientApplication {
 	}
 
 	// We declare a bean here that is initialized with property values from environment
-	@RefreshScope // this bean will be re-initialized when configuration changes
+	// this bean will be re-initialized when configuration changes
+	@RefreshScope
 	@Bean
 	public User user(){
-		User user = new User();
-		user.setFirstName(environment.getProperty("user.firstName"));
-		user.setLastName(environment.getProperty("user.lastName"));
-		user.setEmail(environment.getProperty("user.email"));
-		return user;
+		return new User();
 	}
-
 }

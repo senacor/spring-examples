@@ -1,8 +1,6 @@
-package com.example;
+package com.senacor.tecco.ilms.katas;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,36 +8,27 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by fsubasi on 26.01.2016.
- * Here the injected umgebung and user beans are initialized with configuration from config server
- * A possible order of topics here:
- * 1- bootstrap.yml, specifying config-server location, need to specify spring.application.name in bootstrap.yml
- * to be able to locate service-specific configuration
- * 2- /user and /environment endpoints which display beans that are initialized with configuration from config-server
- * 3- change spring.active.profiles to development, redeploy and see beans initialized with profile-specific configuration
- * 4- @RefreshScope annotation(in ConfigClientApplication class), /env and /refresh endpoints and show we can push
- * configuration and how the beans can be reinitialized without restarting the service(demonstrated in '/updateUser')
  *
- * TODO: Spring Cloud Bus example and show how the config-client service can pull latest configuration from config-server
- * TODO: and reinitialize the beans
+ * To enable a push of configuration updates, the spring cloud enabled application
+ * offers an endpoint /refresh that can be invoked to trigger a refresh of
+ * configuration values that are annotated with @refreshScope.
+ *
+ * As an alternative, spring cloud message bus can be used to enable a push of
+ * configuration properties.
+ *
+ * This controller provides an endpoint updateUser to update values
+ * in the config server to illustrate that beans can be reinitialized
+ * without restarting the service.
  */
 
 @RestController
-public class ConfigClientController {
+public class ConfigClientUpdateController {
+
     String url = "http://localhost:8080/";
     RestTemplate restTemplate = new RestTemplate();
 
-
-    // This value is shared by all clients
-    @Value("${umgebung}")
-    private String umgebung;
-
     @Autowired
     User user;
-
-    @RequestMapping("/user")
-    User userEndpoint() {
-        return this.user;
-    }
 
     @RequestMapping("/updateUser")
     User updateUserEndpoint() {
@@ -52,12 +41,6 @@ public class ConfigClientController {
         // curl -X POST http://localhost:8080/refresh
         refresh();
         return this.user;
-    }
-
-
-    @RequestMapping("/environment")
-    String environment(){
-        return umgebung;
     }
 
     // This method is used to update environment properties

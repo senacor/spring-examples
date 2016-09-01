@@ -1,6 +1,6 @@
-package com.example.ribbon;
+package com.senacor.tecco.ilms.katas.ribbon;
 
-import com.example.User;
+import com.senacor.tecco.ilms.katas.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.PathVariable;

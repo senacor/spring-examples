@@ -1,4 +1,4 @@
-package com.example;
+package com.senacor.tecco.ilms.katas;
 
 /**
  * Created by fsubasi on 01.02.2016.

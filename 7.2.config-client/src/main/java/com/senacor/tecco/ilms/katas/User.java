@@ -1,4 +1,6 @@
-package com.example;
+package com.senacor.tecco.ilms.katas;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -7,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * This is a demo class which is used in many examples.
  */
 @XmlRootElement
+@ConfigurationProperties("user")
 public class User {
     private String firstName;
     private String lastName;

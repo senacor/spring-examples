@@ -1,6 +1,6 @@
-package com.example.feign;
+package com.senacor.tecco.ilms.katas.feign;
 
-import com.example.User;
+import com.senacor.tecco.ilms.katas.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
