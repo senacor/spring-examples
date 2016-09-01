@@ -10,16 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UsersServiceController {
 
-    @RequestMapping("/user/{id}")
-    public User byNumber(@PathVariable("id") int userId) {
-        return createUser();
+    @RequestMapping("/user")
+    public User byNumber() {
+        return User.createUser();
     }
 
-    private User createUser(){
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setEmailAddress("johndoe@example.com");
-        return user;
-    }
 }

@@ -32,11 +32,4 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    public static User createUser(){
-        User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setEmailAddress("johndoe@example.com");
-        return user;
-    }
 }

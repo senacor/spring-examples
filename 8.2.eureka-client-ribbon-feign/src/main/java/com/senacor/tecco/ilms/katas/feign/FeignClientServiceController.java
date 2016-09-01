@@ -15,9 +15,9 @@ public class FeignClientServiceController {
     @Autowired
     private UserClient userClient;
 
-    @RequestMapping("/feign/getUserFromUsersService/{id}")
-    public User getUserFromUsersService(@PathVariable("id") int id){
-        User user = userClient.getUser(id);
+    @RequestMapping("/feign/getUserFromUsersService")
+    public User getUserFromUsersService(){
+        User user = userClient.getUser();
         return user;
     }
 }

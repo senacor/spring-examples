@@ -3,6 +3,7 @@ package com.senacor.tecco.ilms.katas;
 /**
  * Created by fsubasi on 01.02.2016.
  */
+@SuppressWarnings("Duplicates")
 public class User {
     private String firstName;
     private String lastName;
@@ -34,9 +35,9 @@ public class User {
 
     public static User createUser(){
         User user = new User();
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setEmailAddress("johndoe@example.com");
+        user.setFirstName("Andreas");
+        user.setLastName("Keefer");
+        user.setEmailAddress("andreas.keefer@senacor.com");
         return user;
     }
 }

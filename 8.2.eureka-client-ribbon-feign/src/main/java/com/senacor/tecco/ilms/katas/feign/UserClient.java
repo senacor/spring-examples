@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @FeignClient("users-service")
 interface UserClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
-    User getUser(@PathVariable("id") int id);
+    @RequestMapping(method = RequestMethod.GET, value = "/user")
+    User getUser();
 }
