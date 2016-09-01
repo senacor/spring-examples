@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
  * Created by fsubasi on 17.02.2016.
  *
  * This GlobalDefaultExceptionHandler handles NullPointerExceptions
- * In the case of a conflict, this controller has the hightest precedence and it's exception handler will
- * be priorized over the other ones
+ * In the case of a multiple controller advices handling same exception,
+ * the controller with the highest precedence will handle the exception.
  */
 
 @ControllerAdvice

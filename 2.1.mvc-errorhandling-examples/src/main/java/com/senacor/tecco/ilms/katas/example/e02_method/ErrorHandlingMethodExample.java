@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * Created by fsubasi on 05.01.2016.
  *
- * It's possible to add extra (@ExceptionHandler) methods to any controller to specifically
- * handle exceptions thrown by request handling (@RequestMapping) methods in the same controller
+ * Exception Example 2: Intercepting Exception in Controllers
+ *
+ * To handle exceptions thrown by request handling (@RequestMapping) methods,
+ * methods annotated with @ExceptionHandler can be added to any controller.
+ *
  * These (@ExceptionHandler) methods take precedence over other exception handlers (for example,
- * over global exception controllers)
+ * over exception handling performed in controller advices, see Example 3)
  *
  * In this example we throw an IllegalArgumentException and observe that it is intercepted
  * by the @ExceptionHandler annotated method in this controller.
@@ -34,8 +37,10 @@ public class ErrorHandlingMethodExample {
     // @ExceptionHandler declares an exception handler for the specified
     // exception types. Only exceptions thrown in the same controller
     // will be intercepted by the error handler method.
-    @ExceptionHandler(IllegalArgumentException.class)// NOTE TO SELF: If the annotation value is not used,
-    // then the exception types listed as method arguments are used
+    //
+    // If the annotation value is not used, then the exception types
+    // listed as method arguments are used
+    @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     @ResponseBody
     public BaseResponse throwError(IllegalArgumentException e){
