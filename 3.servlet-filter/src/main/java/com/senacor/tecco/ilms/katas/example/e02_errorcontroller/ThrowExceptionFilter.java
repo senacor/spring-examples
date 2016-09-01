@@ -1,9 +1,11 @@
 
-package com.senacor.tecco.ilms.katas.example.e01_filter;
-import org.apache.commons.logging.LogFactory;
+package com.senacor.tecco.ilms.katas.example.e02_errorcontroller;
+
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -19,19 +21,19 @@ import java.util.EnumSet;
 
 
 /**
- * Created by amishra on 06/04/16.
+ * Created by Dr. Michael Menzel, Senacor Technologies AG, 01.09.2016.
  */
 
 @Component
-public class MyFilter {
-    private static final Log log = LogFactory.getLog(MyFilter.class);
+public class ThrowExceptionFilter {
+    private static final Log log = LogFactory.getLog(ThrowExceptionFilter.class);
 
     @Bean
-    public FilterRegistrationBean registerMyFilter() {
+    public FilterRegistrationBean registerExceptionFilter() {
         FilterRegistrationBean register = new FilterRegistrationBean();
 
         register.setName(this.getClass().getName());
-        register.addUrlPatterns("/filter/response/*");
+        register.addUrlPatterns("/filter/response/exception");
         register.setFilter(new Filter());
         register.setOrder(1);
         register.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
@@ -40,16 +42,12 @@ public class MyFilter {
         return register;
     }
 
+
     private class Filter extends OncePerRequestFilter {
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-            log.debug("now filtering");
-            System.out.println("The request is : " + request.getMethod() + " " + request.getRequestURL());
-
-            filterChain.doFilter(request, response);
-
-            System.out.println("The response status is : "+ response.getStatus());
+            throw new CustomException(HttpStatus.BAD_REQUEST, "Exception thrown in servlet filter");
         }
 
     }

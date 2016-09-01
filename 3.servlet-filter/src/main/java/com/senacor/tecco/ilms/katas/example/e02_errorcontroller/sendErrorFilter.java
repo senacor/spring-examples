@@ -1,7 +1,9 @@
 
-package com.senacor.tecco.ilms.katas.example.e01_filter;
-import org.apache.commons.logging.LogFactory;
+package com.senacor.tecco.ilms.katas.example.e02_errorcontroller;
+
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -13,43 +15,38 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EnumSet;
 
 
 /**
- * Created by amishra on 06/04/16.
+ * Created by Dr. Michael Menzel, Senacor Technologies AG, 01.09.2016.
  */
 
 @Component
-public class MyFilter {
-    private static final Log log = LogFactory.getLog(MyFilter.class);
+public class SendErrorFilter {
+    private static final Log log = LogFactory.getLog(SendErrorFilter.class);
 
     @Bean
-    public FilterRegistrationBean registerMyFilter() {
+    public FilterRegistrationBean registerSendErrorFilter() {
         FilterRegistrationBean register = new FilterRegistrationBean();
 
         register.setName(this.getClass().getName());
-        register.addUrlPatterns("/filter/response/*");
+        register.addUrlPatterns("/filter/response/error");
         register.setFilter(new Filter());
-        register.setOrder(1);
+        register.setOrder(3);
         register.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
         register.setEnabled(true);
 
         return register;
     }
 
+
     private class Filter extends OncePerRequestFilter {
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-            log.debug("now filtering");
-            System.out.println("The request is : " + request.getMethod() + " " + request.getRequestURL());
-
-            filterChain.doFilter(request, response);
-
-            System.out.println("The response status is : "+ response.getStatus());
+            HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+            httpServletResponse.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED, "http servlet error");
         }
 
     }
