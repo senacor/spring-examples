@@ -1,5 +1,5 @@
 
-package com.exercise;
+package com.senacor.tecco.ilms.katas.example.e01_filter;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
