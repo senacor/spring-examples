@@ -1,9 +1,9 @@
 package com.example;
 
-import com.common.BaseResponse;
-import com.common.User;
-import com.common.UserInMemoryDB;
-import com.common.UserResponse;
+import com.common.response.BaseResponse;
+import com.common.model.User;
+import com.common.service.UserInMemoryDB;
+import com.common.response.UserResponse;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;

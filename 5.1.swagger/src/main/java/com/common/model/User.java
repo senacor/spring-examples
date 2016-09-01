@@ -1,4 +1,4 @@
-package com.common;
+package com.common.model;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

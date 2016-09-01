@@ -1,4 +1,6 @@
-package com.common;
+package com.common.service;
+
+import com.common.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
