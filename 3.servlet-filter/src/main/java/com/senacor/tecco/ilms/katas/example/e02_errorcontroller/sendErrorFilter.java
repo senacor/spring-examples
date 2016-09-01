@@ -20,6 +20,8 @@ import java.util.EnumSet;
 
 /**
  * Created by Dr. Michael Menzel, Senacor Technologies AG, 01.09.2016.
+ *
+ * Filter that responds with a servlet error
  */
 
 @Component
