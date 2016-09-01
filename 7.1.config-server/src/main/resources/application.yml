@@ -7,11 +7,13 @@ spring:
         config:
             server:
                 native:
-                    search-locations: classpath:/configrepo # if search locations is not given it is the same as Spring boot
-#                                        # i.e. [classpath:/, classpath:/configrepo, file:./, file:./configrepo] e.g. for files => file:\\\C:\Users\fsubasi\Desktop\configrepo-repo\
+                    search-locations: classpath:/configrepo
+                    # if search locations is not given it is the same as Spring boot
+#                   # i.e. [classpath:/, classpath:/configrepo, file:./, file:./configrepo] e.g. for files => file:\\\C:\Users\fsubasi\Desktop\configrepo-repo\
     profiles:
-       active: native # 'native' profile in the Config Server doesn't use Git, but just loads the configrepo files
-                   # from the local classpath or file system
+       # 'native' profile in the Config Server doesn't use Git, but just loads the configrepo files
+       # from the local classpath or file system
+       active: native
 
 # use git
 #spring:
