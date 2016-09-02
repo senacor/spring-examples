@@ -1,4 +1,4 @@
-package com.common.response;
+package com.senacor.tecco.ilms.katas.common.response;
 
 import org.jetbrains.annotations.NotNull;
 

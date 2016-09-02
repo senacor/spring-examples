@@ -1,4 +1,4 @@
-package com.example;
+package com.senacor.tecco.ilms.katas.example;
 
 import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;

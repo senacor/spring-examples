@@ -1,11 +1,11 @@
-package com.common.service;
+package com.senacor.tecco.ilms.katas.common.service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import com.common.model.User;
+import com.senacor.tecco.ilms.katas.common.model.User;
 import org.springframework.stereotype.Component;
 
 /**

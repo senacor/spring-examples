@@ -6,6 +6,7 @@ package com.example;
  * This test class comprises of tests for the UserRestService class
  */
 
+import com.senacor.tecco.ilms.katas.example.Application;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

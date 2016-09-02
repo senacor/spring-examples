@@ -1,9 +1,9 @@
-package com.example;
+package com.senacor.tecco.ilms.katas.example;
 
-import com.common.response.BaseResponse;
-import com.common.model.User;
-import com.common.service.UserService;
-import com.common.response.UserResponse;
+import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
+import com.senacor.tecco.ilms.katas.common.model.User;
+import com.senacor.tecco.ilms.katas.common.service.UserService;
+import com.senacor.tecco.ilms.katas.common.response.UserResponse;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
