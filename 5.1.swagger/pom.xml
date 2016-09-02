@@ -73,6 +73,12 @@
 			<version>0.1</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- spring HATEOAS for Link/Resource Support on ServiceResponse        -->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+			<version>0.20.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
