@@ -9,7 +9,7 @@ package com.example.restdocs;
  * for Spring REST docs document are created.
  */
 
-import com.example.Application;
+import com.senacor.tecco.ilms.katas.example.Application;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,6 +1,6 @@
-package com.example;
+package com.senacor.tecco.ilms.katas.example;
 
-import com.common.model.User;
+import com.senacor.tecco.ilms.katas.common.model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

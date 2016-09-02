@@ -1,4 +1,4 @@
-package com.common.model;
+package com.senacor.tecco.ilms.katas.common.model;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
