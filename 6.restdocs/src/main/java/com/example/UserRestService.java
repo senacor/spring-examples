@@ -1,9 +1,9 @@
 package com.example;
 
-import com.common.BaseResponse;
-import com.common.User;
-import com.common.UserInMemoryDB;
-import com.common.UserResponse;
+import com.common.response.BaseResponse;
+import com.common.model.User;
+import com.common.service.UserService;
+import com.common.response.UserResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +21,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 
-public class UserService {
+public class UserRestService {
 
-    UserInMemoryDB userDB =new UserInMemoryDB();
+    UserService userDB =new UserService();
 
-    public UserService() {
-        userDB.initialiseUsers();
+    public UserRestService() {
     }
 
     /**********************************************************************
@@ -65,7 +64,7 @@ public class UserService {
     @RequestMapping(value = "saveUser", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public ResponseEntity<BaseResponse> saveUsers(@RequestBody User user){
-        User user1 = userDB.saveUsers(user);
+        User user1 = userDB.saveUser(user);
         UserResponse userResponse = new UserResponse(user1);
         HttpHeaders headers = new HttpHeaders();
         String location = "http://localhost/user/99"; //+ Integer.toString(user1.getUserId());

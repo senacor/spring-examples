@@ -1,4 +1,4 @@
-package com.common;
+package com.common.response;
 
 import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;

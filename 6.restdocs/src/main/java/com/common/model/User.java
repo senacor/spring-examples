@@ -1,4 +1,4 @@
-package com.common;
+package com.common.model;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,6 +18,16 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
+    public User() {
+
+    }
+
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public int getUserId() {return userId;}
 
