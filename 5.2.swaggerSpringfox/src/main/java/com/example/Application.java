@@ -1,6 +1,5 @@
 package com.example;
 
-import com.google.common.base.Predicate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -26,7 +25,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @SpringBootApplication
 @EnableSwagger2 //Enable swagger 2.0 spec
 @ComponentScan(basePackageClasses = {
-		UserService.class
+		UserRestService.class
 })
 public class Application {
 	public static void main(String[] args) {

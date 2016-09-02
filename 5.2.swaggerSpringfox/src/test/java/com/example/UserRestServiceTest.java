@@ -3,7 +3,7 @@ package com.example;
 /**
  * Created by asiddiqui on 30/03/16.
  *
- * This test class comprises of tests for the UserService class
+ * This test class comprises of tests for the UserRestService class
  *
  */
 
@@ -29,7 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class UserServiceTest {
+public class UserRestServiceTest {
 
 
     // We specify where the generated snippets will be stored
