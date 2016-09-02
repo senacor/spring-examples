@@ -1,6 +1,6 @@
-package com.common.response;
+package com.senacor.tecco.ilms.katas.common.response;
 
-import com.common.model.User;
+import com.senacor.tecco.ilms.katas.common.model.User;
 
 /**
  * Created by fsubasi on 15.02.2016.

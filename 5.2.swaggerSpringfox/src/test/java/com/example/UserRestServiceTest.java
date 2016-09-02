@@ -7,6 +7,7 @@ package com.example;
  *
  */
 
+import com.senacor.tecco.ilms.katas.example.Application;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
