@@ -4,7 +4,7 @@ It provides an overview of generating REST API documentation for Spring projects
 For every API specification there should exist a bean of type Docket in Application class.
 
 Unlike typical Swagger documented projects, the Springfox Swagger does not require any annotation above the actual API.
-The example can be seen in src > main > java > com.example > restdocs > RequestMappingDemoController where no Swagger
+The example can be seen in src > main > java > com.example > UserRestService where no Swagger
 related annotation exists.
 
 Springfox Swagger integrates the Swagger UI library and the documentation can be seen at
