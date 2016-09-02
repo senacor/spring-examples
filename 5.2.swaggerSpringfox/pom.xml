@@ -81,6 +81,12 @@
 			<artifactId>spring-plugin-metadata</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>
+		<!-- spring HATEOAS for Link/Resource Support on ServiceResponse        -->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+			<version>0.20.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>

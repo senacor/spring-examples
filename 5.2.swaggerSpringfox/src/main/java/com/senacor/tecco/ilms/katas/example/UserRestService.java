@@ -1,9 +1,8 @@
 package com.senacor.tecco.ilms.katas.example;
 
-import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import com.senacor.tecco.ilms.katas.common.model.User;
 import com.senacor.tecco.ilms.katas.common.service.UserService;
-import com.senacor.tecco.ilms.katas.common.response.UserResponse;
+import com.senacor.tecco.ilms.katas.common.response.ServiceResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -75,10 +74,10 @@ public class UserRestService {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "User has been updated"),
             @ApiResponse(code = 415, message = "Request cannot be read"),
             @ApiResponse(code = 404, message = "User not found")})
-    public ResponseEntity<BaseResponse> saveUsers(@ApiParam(value = "Json formulated details for the new user",
+    public ResponseEntity<ServiceResponse> saveUsers(@ApiParam(value = "Json formulated details for the new user",
             required = true)@RequestBody User user){
         User user1 = userDB.saveUser(user);
-        UserResponse userResponse = new UserResponse(user1);
+        ServiceResponse<User> userResponse = new ServiceResponse<>(user1);
         HttpHeaders headers = new HttpHeaders();
         String location = "http://localhost/user/99"; //+ Integer.toString(user1.getUserId());
         URI locationUri = URI.create(location);
