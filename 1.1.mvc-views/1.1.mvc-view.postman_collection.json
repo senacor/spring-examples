@@ -1,0 +1,91 @@
+{
+	"variables": [],
+	"info": {
+		"name": "01.1 mvc-view",
+		"_postman_id": "e9e3e7ef-a0c2-fe26-4da5-0e1dfa7b7aa3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/modelAndView",
+			"request": {
+				"url": "localhost:8080/modelAndView",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/modelWithViewName",
+			"request": {
+				"url": "localhost:8080/modelWithViewName",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/viewResolver/  (http)",
+			"request": {
+				"url": "localhost:8080/viewResolver/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/viewResolver/  (xml)",
+			"request": {
+				"url": "localhost:8080/viewResolver/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

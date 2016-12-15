@@ -30,13 +30,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * the response code and message we configured in our custom exception by using @ResponseStatus
  */
 @Controller
-@RequestMapping("/errorHandling/annotatedException")
+@RequestMapping("/errorHandling")
 public class AnnotatedExceptionController {
 
     @Autowired
     ApplicationContext context;
 
-    @RequestMapping("")
+    @RequestMapping("plainException")
+    public String throRuntimeException(){
+        throw new RuntimeException("Das ist eine Exception");
+    }
+
+    @RequestMapping("annotatedException")
     public String throwBookNotFoundException(){
         throw new BookNotFoundException();
     }

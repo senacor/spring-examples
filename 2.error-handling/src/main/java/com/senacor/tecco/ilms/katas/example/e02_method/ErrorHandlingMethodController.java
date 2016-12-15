@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/errorHandling/method")
+@RequestMapping("/errorHandling")
 public class ErrorHandlingMethodController {
 
-    @RequestMapping(value = "messageComposer")
+    @RequestMapping(value = "errorhandler")
     @ResponseBody
     public String throwException(){
         throw new IllegalArgumentException("¯\\_(ツ)_/¯");
@@ -40,7 +40,7 @@ public class ErrorHandlingMethodController {
     // listed as method arguments are used
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
-    public ResponseEntity<Object> throwError(IllegalArgumentException e){
+    public ResponseEntity<Object> errorHandler(IllegalArgumentException e){
         return new ResponseEntity<Object>(createErrorMessage(e), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

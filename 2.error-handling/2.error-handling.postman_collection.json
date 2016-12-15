@@ -1,0 +1,136 @@
+{
+	"variables": [],
+	"info": {
+		"name": "02 error-handling",
+		"_postman_id": "48111072-dd48-d85c-3741-2a48acfe8e85",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "errorHandling/plainException",
+			"request": {
+				"url": "localhost:8080/errorHandling/plainException",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "errorHandling/annotatedException",
+			"request": {
+				"url": "localhost:8080/errorHandling/annotatedException",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "errorHandling/errorhandler",
+			"request": {
+				"url": "localhost:8080/errorHandling/errorhandler",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "errorHandling/global/throwNFE",
+			"request": {
+				"url": "localhost:8080/errorHandling/global/throwNFE",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "errorHandling/global/throwNPE",
+			"request": {
+				"url": "localhost:8080/errorHandling/global/throwNPE",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

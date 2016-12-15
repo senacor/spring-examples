@@ -42,7 +42,7 @@ public class ResponseEntityController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public ResponseEntity<BaseResponse> createResponseEntityWithLocation(@RequestBody User user){
+    public ResponseEntity<BaseResponse>b createResponseEntityWithLocation(@RequestBody User user){
         // Do something with user ...................
         UserResponse userResponse = new UserResponse(user);
         HttpHeaders headers = new HttpHeaders();

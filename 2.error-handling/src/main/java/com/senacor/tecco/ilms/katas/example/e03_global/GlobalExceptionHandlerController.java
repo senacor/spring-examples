@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/errorHandling/global")
 public class GlobalExceptionHandlerController {
 
-    @RequestMapping("messageComposer")
+    @RequestMapping("throwNFE")
     public String messageComposer(){
         throw new NumberFormatException();
     }

@@ -1,0 +1,87 @@
+{
+	"variables": [],
+	"info": {
+		"name": "03 servlet-filter",
+		"_postman_id": "38c9774c-cfce-ae57-3d36-d7f9438352f9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/filter/response/ok",
+			"request": {
+				"url": "localhost:8080/filter/response/ok",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/filter/response/created",
+			"request": {
+				"url": "localhost:8080/filter/response/created",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/filter/response/senderror",
+			"request": {
+				"url": "localhost:8080/filter/response/error",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/filter/response/exception",
+			"request": {
+				"url": "localhost:8080/filter/response/exception",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/filter/response/exception",
+			"request": {
+				"url": "localhost:8080/filter/response/exception",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

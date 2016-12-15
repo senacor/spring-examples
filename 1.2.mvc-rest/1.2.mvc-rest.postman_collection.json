@@ -1,0 +1,236 @@
+{
+	"variables": [],
+	"info": {
+		"name": "01.2 mvc-rest",
+		"_postman_id": "cdf4a748-b2d4-b5b8-e0d6-0e92313190f7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080//basics/helloWorld",
+			"request": {
+				"url": "localhost:8080//basics/helloWorld",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080//basics/helloWorldRest",
+			"request": {
+				"url": "localhost:8080//basics/helloWorldRest",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080//negotiation (json)",
+			"request": {
+				"url": "localhost:8080/negotiation/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080//negotiation (xml)",
+			"request": {
+				"url": "localhost:8080/negotiation/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080//negotiation/userAsXML",
+			"request": {
+				"url": "localhost:8080/negotiation/userAsXML",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/mapping/pathVariable",
+			"request": {
+				"url": "localhost:8080/mapping/pathVariable/senacor",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/mapping/pathVariableWithRegex",
+			"request": {
+				"url": "localhost:8080/mapping/pathVariableWithRegex/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/mapping/queryParam",
+			"request": {
+				"url": "localhost:8080/mapping/queryParam?name=Michael",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/mapping/post",
+			"request": {
+				"url": "localhost:8080/mapping/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Test"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/responseEntity/users",
+			"request": {
+				"url": "localhost:8080/responseEntity/users/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Test"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/responseEntity/users",
+			"request": {
+				"url": "localhost:8080/responseEntity/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"userId\": 1,\n    \"firstName\": \"Jack\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jackdoe@example.com\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
