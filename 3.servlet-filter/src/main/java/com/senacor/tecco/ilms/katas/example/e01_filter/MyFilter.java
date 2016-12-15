@@ -48,16 +48,16 @@ public class MyFilter {
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-            log.debug("now filtering");
+            log.info("now filtering");
 
             //handle request
-            log.debug("The request is : " + request.getMethod() + " " + request.getRequestURL());
+            log.info("The request is : " + request.getMethod() + " " + request.getRequestURL());
 
             //invoke next filter in the chain
             filterChain.doFilter(request, response);
 
             //handle response
-            log.debug("The response status is : "+ response.getStatus());
+            log.info("The response status is : "+ response.getStatus());
         }
 
     }
