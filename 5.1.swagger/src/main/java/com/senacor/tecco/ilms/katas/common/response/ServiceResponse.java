@@ -1,8 +1,8 @@
 package com.senacor.tecco.ilms.katas.common.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.hateoas.ResourceSupport;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  * Base Response for all REST services
  * includes a set of messages that provide response details
  */
-public class ServiceResponse<T> extends ResourceSupport {
+public class ServiceResponse<T> extends RepresentationModel {
 
     private static final long serialVersionUID = 7333730481583143017L;
 

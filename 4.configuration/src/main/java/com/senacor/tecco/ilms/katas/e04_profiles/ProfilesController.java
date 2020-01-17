@@ -1,7 +1,6 @@
 package com.senacor.tecco.ilms.katas.e04_profiles;
 
 import com.senacor.tecco.ilms.katas.e02_configurationproperties.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/profiles/development")
 public class ProfilesController {
-    @Autowired
-    private User user;
+
+    private final User user;
+
+    public ProfilesController(User user) {
+        this.user = user;
+    }
 
     // Now the user object will be {"firstName":"developmentName","lastName":"developmentLastName","email":"developmentEmail"}
     @RequestMapping("")

@@ -3,7 +3,7 @@ package com.senacor.tecco.ilms.katas.views.e03_viewresolver.e03_pdf;
 import com.senacor.tecco.ilms.katas.views.User;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.web.servlet.View;
 
@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.*;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by fsubasi on 22.02.2016.
@@ -80,7 +81,7 @@ public class UserPdfView implements View {
         final int rows = content.length;
         final int cols = content[0].length;
         final float rowHeight = 20f;
-        final float tableWidth = page.findMediaBox().getWidth() - margin - margin;
+        final float tableWidth = page.getMediaBox().getWidth() - margin - margin;
         final float tableHeight = rowHeight * rows;
         final float colWidth = tableWidth/(float)cols;
         final float cellMargin = 5f;

@@ -1,6 +1,5 @@
 package com.senacor.tecco.ilms.katas;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * 2) The endpoints /user and /environment in this controller return values provided by the config-server
  * 3) change spring.active.profiles to development, redeploy and see beans initialized with profile-specific configuration
  */
-
 @RestController
 public class ConfigClientExampleController {
 
@@ -24,16 +22,19 @@ public class ConfigClientExampleController {
     private String umgebung;
 
     // This value is initialized with data from the config server
-    @Autowired
-    User user;
+    private final User user;
 
-    //entpoint to retrieve user configuration data
+    public ConfigClientExampleController(User user) {
+        this.user = user;
+    }
+
+    //endpoint to retrieve user configuration data
     @RequestMapping("/user")
     User userEndpoint() {
         return this.user;
     }
 
-    //entpoint to retrieve environment configuration property
+    //endpoint to retrieve environment configuration property
     @RequestMapping("/environment")
     String environment(){
         return umgebung;

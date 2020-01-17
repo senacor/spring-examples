@@ -1,15 +1,13 @@
 package com.senacor.tecco.ilms.katas.example.e06_client;
 
-import com.senacor.tecco.ilms.katas.Application;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -21,10 +19,9 @@ import java.util.Map;
  * RestTemplate example: Here we see RestTemplate's GET convenience methods getForObject and getForEntity
  * in action. These methods have 3 overloaded versions. We demonstrate three overloaded variants of getForObject
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebIntegrationTest(randomPort = true)
-@SpringApplicationConfiguration(classes = {Application.class})
-public class RestTemplateGetTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class RestTemplateGetTest {
     // Reduces boilerplate of java.net.HttpUrlConnection
     // uses HttpMessageConverters to convert response into Java object
     RestTemplate restTemplate = new RestTemplate();
@@ -34,7 +31,7 @@ public class RestTemplateGetTest {
     int port;
 
     @Test
-    public void testGetForObjectWithURI() {
+    void testGetForObjectWithURI() {
         URI uri = URI.create("http://localhost:" + port + "/basics/helloWorld");
 
         String str = restTemplate.getForObject(uri, // server url
@@ -45,7 +42,7 @@ public class RestTemplateGetTest {
     }
 
     @Test
-    public void testGetForObjectWithStringAndMap(){
+    void testGetForObjectWithStringAndMap() {
         Map<String, String> templateParams = new HashMap<>();
         templateParams.put("parameter", "myParameter"); // placeholder and its value
 
@@ -57,7 +54,7 @@ public class RestTemplateGetTest {
     }
 
     @Test
-    public void testGetForObjectWithStringVarargs(){
+    void testGetForObjectWithStringVarargs() {
         String response =
                 restTemplate.getForObject("http://localhost:" + port + "/mapping/pathVariable/{parameter}",
                         String.class,
@@ -68,7 +65,7 @@ public class RestTemplateGetTest {
 
     // Here we see how to get response status and response headers
     @Test
-    public void testGetForEntityWithStringVarargs(){
+    void testGetForEntityWithStringVarargs() {
         ResponseEntity<String> responseEntity =
                 restTemplate.getForEntity("http://localhost:" + port + "/mapping/pathVariable/{parameter}",
                         String.class,

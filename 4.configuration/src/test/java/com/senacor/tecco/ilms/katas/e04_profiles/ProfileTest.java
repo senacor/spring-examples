@@ -1,31 +1,28 @@
 package com.senacor.tecco.ilms.katas.e04_profiles;
 
-import com.senacor.tecco.ilms.katas.Application;
 import com.senacor.tecco.ilms.katas.e02_configurationproperties.User;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * Created by fsubasi on 11.02.2016.
  * Demonstrating @ActiveProfiles annotation
  */
 @ActiveProfiles(profiles = "development") // Profiles that are active for this test
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@SpringApplicationConfiguration(classes = Application.class)
-public class ProfileTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
+class ProfileTest {
     @Autowired
     private User user;
 
     @Test
-    public void profileTest(){
+    void profileTest() {
         // The properties of @ConfigurationProperties annotated Person bean are overridden in application.yml
         // We test if these property values are same as it is for development profile the application.yml
         User expectedUser = new User();

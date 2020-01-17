@@ -1,8 +1,6 @@
 package com.senacor.tecco.ilms.katas.feign;
 
 import com.senacor.tecco.ilms.katas.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FeignClientServiceController {
 
-    @Autowired
-    private UserClient userClient;
+    private final UserClient userClient;
+
+    public FeignClientServiceController(UserClient userClient) {
+        this.userClient = userClient;
+    }
 
     @RequestMapping("/feign/getUserFromUsersService")
     public User getUserFromUsersService(){

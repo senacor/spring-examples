@@ -2,7 +2,7 @@ package com.senacor.tecco.ilms.katas.e03_propertysource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties("propertySourceUser")
+@ConfigurationProperties("property-source-user")
 public class User {
     private String firstName;
     private String lastName;

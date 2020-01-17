@@ -1,8 +1,8 @@
 package com.senacor.tecco.ilms.katas.example.e01_filter;
 
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,8 +30,8 @@ public class MyFilter {
     private static final Log log = LogFactory.getLog(MyFilter.class);
 
     @Bean
-    public FilterRegistrationBean registerMyFilter() {
-        FilterRegistrationBean register = new FilterRegistrationBean();
+    public FilterRegistrationBean<Filter> registerMyFilter() {
+        FilterRegistrationBean<Filter> register = new FilterRegistrationBean<>();
 
         register.setName(this.getClass().getName());
         register.addUrlPatterns("/filter/response/*");
@@ -44,7 +44,7 @@ public class MyFilter {
     }
 
     //Servlet filter definition
-    private class Filter extends OncePerRequestFilter {
+    private static class Filter extends OncePerRequestFilter {
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

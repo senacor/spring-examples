@@ -1,7 +1,10 @@
 package com.senacor.tecco.ilms.katas;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -27,8 +30,11 @@ public class ConfigClientUpdateController {
     String url = "http://localhost:8080/";
     RestTemplate restTemplate = new RestTemplate();
 
-    @Autowired
-    User user;
+    private final User user;
+
+    public ConfigClientUpdateController(User user) {
+        this.user = user;
+    }
 
     @RequestMapping("/updateUser")
     User updateUserEndpoint() {
@@ -50,7 +56,7 @@ public class ConfigClientUpdateController {
     private void updateEnvironment(String propertyString){
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        HttpEntity<String> requestEntity = new HttpEntity<String>(propertyString, requestHeaders);
+        HttpEntity<String> requestEntity = new HttpEntity<>(propertyString, requestHeaders);
         ResponseEntity<?> response = restTemplate.exchange(url + "env", HttpMethod.POST, requestEntity, Object.class);
 
     }

@@ -1,9 +1,9 @@
 package com.senacor.tecco.ilms.katas.e04_profiles;
 
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Created by fsubasi on 09.02.2016.
@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
  */
 @Profile("development") // This configuration is only enabled if the active profile is development
 @Component
-public class CustomWebMvcAutoConfigurationAdapter extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter {
+public class CustomWebMvcAutoConfigurationAdapter implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("file:/path/to/my/web/folder/");

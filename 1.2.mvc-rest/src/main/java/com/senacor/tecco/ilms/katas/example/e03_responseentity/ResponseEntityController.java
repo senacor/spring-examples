@@ -4,11 +4,14 @@ import com.senacor.tecco.ilms.katas.common.model.User;
 import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
 import com.senacor.tecco.ilms.katas.common.response.UserResponse;
 import com.senacor.tecco.ilms.katas.common.service.UserService;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
@@ -42,7 +45,7 @@ public class ResponseEntityController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public ResponseEntity<BaseResponse>b createResponseEntityWithLocation(@RequestBody User user){
+    public ResponseEntity<BaseResponse> createResponseEntityWithLocation(@RequestBody User user){
         // Do something with user ...................
         UserResponse userResponse = new UserResponse(user);
         HttpHeaders headers = new HttpHeaders();

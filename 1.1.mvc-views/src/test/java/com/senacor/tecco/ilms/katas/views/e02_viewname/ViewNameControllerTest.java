@@ -1,8 +1,9 @@
 package com.senacor.tecco.ilms.katas.views.e02_viewname;
 
-import com.senacor.tecco.ilms.katas.views.Application;
-import org.junit.Test;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -13,11 +14,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
  * Created by fsubasi on 18.01.2016.
  */
 @WebAppConfiguration
-@SpringApplicationConfiguration(classes = Application.class)
-public class ViewNameControllerTest {
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class ViewNameControllerTest {
 
     @Test
-    public void stringViewNameDemoTest() throws Exception{
+    void stringViewNameDemoTest() throws Exception {
         ViewNameController controller = new ViewNameController();
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
         mockMvc.perform(MockMvcRequestBuilders.get("/modelWithViewName"))

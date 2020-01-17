@@ -1,9 +1,9 @@
 package com.senacor.tecco.ilms.katas.example.e04_customization;
 
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Created by fsubasi on 03.02.2016.
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
  * For demonstrating the configuration done in FSLWebMvcConfigurer in common-fsl-service
  */
 @Component
-public class CustomWebMvcAutoConfigurationAdapter extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
+public class CustomWebMvcAutoConfigurationAdapter implements WebMvcConfigurer {
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {

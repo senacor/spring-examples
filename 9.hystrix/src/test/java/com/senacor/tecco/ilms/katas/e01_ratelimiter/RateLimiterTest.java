@@ -3,23 +3,21 @@ package com.senacor.tecco.ilms.katas.e01_ratelimiter;
 import com.google.common.util.concurrent.RateLimiter;
 import com.senacor.tecco.ilms.katas.HystrixApplication;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * Created by fsubasi on 04.02.2016.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = HystrixApplication.class)
-@WebAppConfiguration
-public class RateLimiterTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = HystrixApplication.class)
+class RateLimiterTest {
 
     @Test
-    public void rateLimiterTest(){
+    void rateLimiterTest() {
         int rateLimiterCounter = 0;
         // distribute two permits every minute
         RateLimiter rateLimiter = RateLimiter.create(2);
@@ -27,7 +25,7 @@ public class RateLimiterTest {
         long start = System.nanoTime();
         long now = System.nanoTime();
         // run for three seconds
-        while(now - start < 3_000_000_000L){
+        while (now - start < 3_000_000_000L) {
             rateLimiter.acquire();
             rateLimiterCounter++;
             now = System.nanoTime();

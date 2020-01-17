@@ -1,50 +1,46 @@
 package com.senacor.tecco.ilms.katas.e02_hystrix;
 
 import com.senacor.tecco.ilms.katas.HystrixApplication;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = HystrixApplication.class)
-@WebAppConfiguration
-public class HystrixApplicationTests {
-	@Autowired
-	private WebApplicationContext webContext;
-	private MockMvc mockMvc;
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = HystrixApplication.class)
+class HystrixApplicationTests {
 
-	@Before
-	public void setupMockMvc() {
-		mockMvc = MockMvcBuilders
-				.webAppContextSetup(webContext)
-				.build();
-	}
+    private MockMvc mockMvc;
 
-	@Test
-	public void hystrixDemoExceptionTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/hystrixDemoException"))
-				.andExpect(MockMvcResultMatchers.content()
-						.string("Our servers are overloaded right now. Please try again later"));
-	}
+    @BeforeEach
+    void setupMockMvc(WebApplicationContext webContext) {
+        mockMvc = MockMvcBuilders
+                .webAppContextSetup(webContext)
+                .build();
+    }
 
-	@Test
-	public void hystrixDemoTimeoutTest() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/hystrixDemoTimeout"))
-				.andExpect(MockMvcResultMatchers.content()
-						.string("Our servers are overloaded right now. Please try again later"));
-	}
+    @Test
+    void hystrixDemoExceptionTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/hystrixDemoException"))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("Our servers are overloaded right now. Please try again later"));
+    }
+
+    @Test
+    void hystrixDemoTimeoutTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/hystrixDemoTimeout"))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string("Our servers are overloaded right now. Please try again later"));
+    }
 /*
 	@Test
-	public void hystrixOpenCircuit() throws Exception {
+	 void hystrixOpenCircuit() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/hystrixOpenCircuit"))
 				.andExpect(MockMvcResultMatchers.content()
 						.string("Standard response"));

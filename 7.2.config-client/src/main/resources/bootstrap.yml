@@ -3,6 +3,7 @@ spring:
     name: config-client
   cloud:
     config:
+      name: config-client
       enabled: true
       uri: http://localhost:8888  # config-server location
   #profiles.active: development   # set active profile to development to observe configure.projectName property overridden

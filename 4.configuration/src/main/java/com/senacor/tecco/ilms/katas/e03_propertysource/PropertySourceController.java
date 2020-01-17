@@ -1,6 +1,5 @@
 package com.senacor.tecco.ilms.katas.e03_propertysource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/source")
 public class PropertySourceController {
 
-    @Autowired
-    @Qualifier("propertySourceUser")
-    private User user;
+    private final User user;
+
+    public PropertySourceController(@Qualifier("propertySourceUser") User user) {
+        this.user = user;
+    }
 
     @RequestMapping("/property/user")
     public User customUser(){

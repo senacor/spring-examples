@@ -1,11 +1,9 @@
 package com.senacor.tecco.ilms.katas.views;
 
-import com.senacor.tecco.ilms.katas.views.User;
 import com.senacor.tecco.ilms.katas.views.e03_viewresolver.e01_json.JacksonViewResolver;
 import com.senacor.tecco.ilms.katas.views.e03_viewresolver.e02_xml.MarshallingXmlViewResolver;
 import com.senacor.tecco.ilms.katas.views.e03_viewresolver.e03_pdf.PdfViewResolver;
 import com.senacor.tecco.ilms.katas.views.e03_viewresolver.e04_xls.ExcelViewResolver;
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -13,10 +11,11 @@ import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+
 
 /**
  * Created by fsubasi on 22.02.2016.
@@ -25,7 +24,7 @@ import org.thymeleaf.templateresolver.TemplateResolver;
  * indicates tries to find the View that is most suitable to the requested content type.
  */
 @Configuration
-public class CustomMvcConfiguration extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
+public class CustomMvcConfiguration implements WebMvcConfigurer {
 
     @Bean
     public Marshaller marshaller(){
@@ -67,14 +66,14 @@ public class CustomMvcConfiguration extends WebMvcAutoConfiguration.WebMvcAutoCo
         return viewResolver;
     }
     @Bean
-    public SpringTemplateEngine customTemplateEngine(TemplateResolver customTemplateResolver) {
+    public SpringTemplateEngine customTemplateEngine(ClassLoaderTemplateResolver customTemplateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(customTemplateResolver);
         return templateEngine;
     }
     @Bean
-    public TemplateResolver customTemplateResolver() {
-        TemplateResolver templateResolver = new ServletContextTemplateResolver();
+    public ClassLoaderTemplateResolver customTemplateResolver() {
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
@@ -99,6 +98,5 @@ public class CustomMvcConfiguration extends WebMvcAutoConfiguration.WebMvcAutoCo
                 .mediaType("html", MediaType.TEXT_HTML) // we can serve html
                 .mediaType("pdf", new MediaType("application", "pdf"))
                 .mediaType("xls", new MediaType("application", "vnd.ms-excel"));
-        super.configureContentNegotiation(configurer);
     }
 }

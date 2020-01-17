@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 /**
  * Created by fsubasi on 18.01.2016.
  * This is a demo class which is used in many examples.

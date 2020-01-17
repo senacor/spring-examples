@@ -17,7 +17,7 @@ import java.util.Map;
  * Please note that lists and maps defined in the configuration are set as well.
  */
 @RestController
-@ConfigurationProperties("e01ConfigurationProperties")
+@ConfigurationProperties("e01configurationproperties")
 public class ConfigurationPropertiesController {
 
     //these values are injected by Spring using the setters

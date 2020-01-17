@@ -27,7 +27,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user")
-@Api(value="user", description="Resources for user service")
+@Api(value="user", description="CollectionModel for user service")
 public class UserRestService {
 
     UserService userDB =new UserService();

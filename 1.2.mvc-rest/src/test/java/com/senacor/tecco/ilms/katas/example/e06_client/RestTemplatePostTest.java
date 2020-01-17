@@ -1,23 +1,19 @@
 package com.senacor.tecco.ilms.katas.example.e06_client;
 
-import com.senacor.tecco.ilms.katas.Application;
-
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by fsubasi on 28.01.2016.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebIntegrationTest(randomPort = true)
-@SpringApplicationConfiguration(classes = {Application.class})
-public class RestTemplatePostTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class RestTemplatePostTest {
     RestTemplate restTemplate = new RestTemplate();
 
     // Discover the HTTP port at runtime
@@ -25,7 +21,7 @@ public class RestTemplatePostTest {
     int port;
 
     @Test
-    public void testPostForObjectWithStringVarargs(){
+    void testPostForObjectWithStringVarargs() {
         String response = restTemplate.postForObject("http://localhost:{port}/mapping",
                 "1234567890", String.class, port);
 

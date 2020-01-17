@@ -1,26 +1,28 @@
 package com.senacor.tecco.ilms.katas.example.e06_client;
 
-import com.senacor.tecco.ilms.katas.Application;
 import com.senacor.tecco.ilms.katas.common.model.User;
 import com.senacor.tecco.ilms.katas.common.response.UserResponse;
 import org.hamcrest.beans.SamePropertyValuesAs;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.http.*;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by fsubasi on 28.01.2016.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebIntegrationTest(randomPort = true)
-@SpringApplicationConfiguration(classes = {Application.class})
-public class RestTemplateExchangeTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class RestTemplateExchangeTest {
     RestTemplate restTemplate = new RestTemplate();
 
     // Discover the HTTP port at runtime
@@ -33,10 +35,10 @@ public class RestTemplateExchangeTest {
     // Here we demonstrate a scenario where we post an object and get it back with its location in the response
     
     @Test
-    public void testExchangeForLocationHttpEntity(){
+    void testExchangeForLocationHttpEntity(){
     	User newUser = new User("Maria", "Liu", "marialiu@example.com");
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<User> requestEntity = new HttpEntity<>(newUser, // Request Body
                 headers);
 

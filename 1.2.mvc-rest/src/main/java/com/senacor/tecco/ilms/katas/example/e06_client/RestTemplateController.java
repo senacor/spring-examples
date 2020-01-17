@@ -2,10 +2,13 @@ package com.senacor.tecco.ilms.katas.example.e06_client;
 
 import com.senacor.tecco.ilms.katas.common.model.User;
 import com.senacor.tecco.ilms.katas.common.response.UserResponse;
-
-import org.springframework.boot.context.embedded.EmbeddedServletContainerInitializedEvent;
+import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +26,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/restTemplate")
-public class RestTemplateController implements ApplicationListener<EmbeddedServletContainerInitializedEvent> {
+public class RestTemplateController implements ApplicationListener<ServletWebServerInitializedEvent> {
 
     int port;
 
@@ -69,7 +72,7 @@ public class RestTemplateController implements ApplicationListener<EmbeddedServl
 
     // not related to example just to get port no
     @Override
-    public void onApplicationEvent(final EmbeddedServletContainerInitializedEvent event) {
-        port = event.getEmbeddedServletContainer().getPort();
+    public void onApplicationEvent(final ServletWebServerInitializedEvent event) {
+        port = event.getWebServer().getPort();
     }
 }

@@ -1,14 +1,13 @@
 package com.senacor.tecco.ilms.katas.example.e02_errorcontroller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fsubasi on 19.01.2016.
@@ -64,7 +63,7 @@ public class CustomErrorController implements ErrorController {
         System.out.println(message);
         System.out.println(statusCode);
 
-        return new ResponseEntity<String>("Error handled by error handler: " + message, statusCode);
+        return new ResponseEntity<>("Error handled by error handler: " + message, statusCode);
     }
 
 
