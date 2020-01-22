@@ -21,6 +21,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<pdfbox.version>2.0.18</pdfbox.version>
+		<poi.version>4.1.1</poi.version>
+		<jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+		<jaxb-runtime.version>2.3.2</jaxb-runtime.version>
 	</properties>
 
 	<dependencies>
@@ -58,25 +62,25 @@
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
-			<version>2.0.18</version>
+			<version>${pdfbox.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>4.1.1</version>
+			<version>${poi.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>2.3.2</version>
+			<version>${jakarta.xml.bind-api.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
-			<version>2.3.2</version>
+			<version>${jaxb-runtime.version}</version>
 		</dependency>
 	</dependencies>
 	

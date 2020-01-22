@@ -23,6 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+		<annotations.version>18.0.0</annotations.version>
 	</properties>
 
 	<dependencies>
@@ -60,7 +61,7 @@
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
-			<version>18.0.0</version>
+			<version>${annotations.version}</version>
 		</dependency>
 	</dependencies>
 	

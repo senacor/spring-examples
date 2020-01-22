@@ -23,6 +23,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+		<annotations.version>18.0.0</annotations.version>
+		<swagger-springmvc.version>1.0.2</swagger-springmvc.version>
+		<swagger-annotations.version>2.1.1</swagger-annotations.version>
+		<swagger-spring-mvc-ui.version>0.4</swagger-spring-mvc-ui.version>
+		<spring-hateoas.version>1.0.3.RELEASE</spring-hateoas.version>
+		<jaxb-api.version>2.3.1</jaxb-api.version>
 	</properties>
 
 	<dependencies>
@@ -60,35 +66,35 @@
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
-			<version>18.0.0</version>
+			<version>${annotations.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.mangofactory</groupId>
 			<artifactId>swagger-springmvc</artifactId>
-			<version>1.0.2</version>
+			<version>${swagger-springmvc.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>2.1.1</version>
+			<version>${swagger-annotations.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.ajar</groupId>
 			<artifactId>swagger-spring-mvc-ui</artifactId>
-			<version>0.4</version>
+			<version>${swagger-spring-mvc-ui.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<!-- spring HATEOAS for Link/Resource Support on ServiceResponse        -->
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
 			<artifactId>spring-hateoas</artifactId>
-			<version>1.0.3.RELEASE</version>
+			<version>${spring-hateoas.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
+			<version>${jaxb-api.version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
