@@ -2,8 +2,6 @@ package com.senacor.tecco.ilms.katas.example.e06_client;
 
 import com.senacor.tecco.ilms.katas.common.model.User;
 import com.senacor.tecco.ilms.katas.common.response.UserResponse;
-import org.hamcrest.beans.SamePropertyValuesAs;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by fsubasi on 28.01.2016.
@@ -45,16 +45,16 @@ class RestTemplateExchangeTest {
         ResponseEntity<UserResponse> responseEntity = restTemplate.exchange(
                 "http://localhost:{port}/responseEntity/users",
                 HttpMethod.POST, requestEntity, UserResponse.class, port);
-        Assert.assertNotNull(responseEntity);
-        Assert.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-        Assert.assertEquals("http://localhost/responseEntity/users/9", // backend always responds with the same location header
-                responseEntity.getHeaders().getLocation().toString());
+        assertThat(responseEntity).isNotNull();
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(responseEntity.getHeaders().getLocation().toString())
+                .isEqualTo("http://localhost/responseEntity/users/9");// backend always responds with the same location header
 
-        Assert.assertTrue(responseEntity.hasBody());
+        assertThat(responseEntity.hasBody()).isTrue();
         UserResponse response = responseEntity.getBody();
-        Assert.assertTrue(response.get_successful());
-        Assert.assertTrue(response.get_messages().isEmpty());
-        Assert.assertThat(newUser, SamePropertyValuesAs.samePropertyValuesAs(response.getUser()));
+        assertThat(response.get_successful()).isTrue();
+        assertThat(response.get_messages()).isEmpty();
+        assertThat(response.getUser()).isEqualToComparingFieldByField(newUser);
     }
     
 }

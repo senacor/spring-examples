@@ -7,10 +7,11 @@ import com.senacor.tecco.ilms.katas.common.service.UserService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
@@ -30,7 +31,7 @@ public class ResponseEntityController {
 
 	UserService userService = new UserService();
 	
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
+    @GetMapping("/users/{userId}")
     public ResponseEntity<UserResponse> createResponseEntity(@PathVariable("userId") int userId){
         // Use userId to get the user and return a UserResponse, here we just return a mock object
         UserResponse userResponse = new UserResponse(userService.getUserFromID(userId));
@@ -44,7 +45,7 @@ public class ResponseEntityController {
         return ResponseEntity.ok(userResponse);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @PostMapping("/users")
     public ResponseEntity<BaseResponse> createResponseEntityWithLocation(@RequestBody User user){
         // Do something with user ...................
         UserResponse userResponse = new UserResponse(user);

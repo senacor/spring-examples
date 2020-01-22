@@ -1,0 +1,26 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/address/([0-9]+)"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_userAddress.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/address/([0-9]{3})"
+      },
+      "response": {
+        "status": 404
+      }
+    }
+  ]
+}

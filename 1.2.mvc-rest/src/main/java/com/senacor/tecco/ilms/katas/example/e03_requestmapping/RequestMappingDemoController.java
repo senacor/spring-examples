@@ -1,8 +1,17 @@
 package com.senacor.tecco.ilms.katas.example.e03_requestmapping;
 
-import org.springframework.web.bind.annotation.*;
-
 import com.senacor.tecco.ilms.katas.common.response.BaseResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -86,5 +95,16 @@ public class RequestMappingDemoController {
         return response;
     }
 
+    // Using Request Mapping with method definition can be replaced using more specific annotations
+    @GetMapping("/updated_syntax")
+    public String getMapping() {
+        return "New Get Mapping";
+    }
+
+    // Response status for successful service response can be altered using @ResponseStatus
+    @PostMapping("/updated_syntax")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void getMapping(@RequestBody String requestBody) {
+    }
 
 }

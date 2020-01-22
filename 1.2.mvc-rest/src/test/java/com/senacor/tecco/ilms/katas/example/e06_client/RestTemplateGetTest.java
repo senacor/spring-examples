@@ -1,6 +1,5 @@
 package com.senacor.tecco.ilms.katas.example.e06_client;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by fsubasi on 28.01.2016.
@@ -38,7 +39,7 @@ class RestTemplateGetTest {
                 String.class // an object of type String is expected
         );
 
-        Assert.assertEquals("Hello world!", str);
+        assertThat(str).isEqualTo("Hello world!");
     }
 
     @Test
@@ -50,7 +51,7 @@ class RestTemplateGetTest {
                 restTemplate.getForObject("http://localhost:" + port + "/mapping/pathVariable/{parameter}",
                         String.class,
                         templateParams);
-        Assert.assertEquals("Parameter is myParameter", response);
+        assertThat(response).isEqualTo("Parameter is myParameter");
     }
 
     @Test
@@ -60,7 +61,7 @@ class RestTemplateGetTest {
                         String.class,
                         "myParameter"); // The last argument is vararg, i.e. placeholders can be defined one after the other following the sequence in URL
 
-        Assert.assertEquals("Parameter is myParameter", response);
+        assertThat(response).isEqualTo("Parameter is myParameter");
     }
 
     // Here we see how to get response status and response headers
@@ -71,10 +72,9 @@ class RestTemplateGetTest {
                         String.class,
                         "myParameter");
 
-        Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        Assert.assertNotNull(responseEntity.getHeaders());
-        Assert.assertEquals("text/plain;charset=UTF-8", responseEntity.getHeaders().getContentType().toString());
-        Assert.assertEquals("Parameter is myParameter", responseEntity.getBody());
-
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getHeaders()).isNotNull();
+        assertThat(responseEntity.getHeaders().getContentType().toString()).isEqualTo("text/plain;charset=UTF-8");
+        assertThat(responseEntity.getBody()).isEqualTo("Parameter is myParameter");
     }
 }

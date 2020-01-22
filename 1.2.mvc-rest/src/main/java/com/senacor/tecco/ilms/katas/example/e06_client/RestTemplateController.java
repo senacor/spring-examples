@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -32,7 +33,7 @@ public class RestTemplateController implements ApplicationListener<ServletWebSer
 
     RestTemplate restTemplate = new RestTemplate();
 
-    @RequestMapping("/getForObject")
+    @GetMapping("/getForObject")
     public String getForObjectWithURI() {
         URI uri = URI.create("http://localhost:" + port + "/basics/helloWorldRest");
 
@@ -41,7 +42,7 @@ public class RestTemplateController implements ApplicationListener<ServletWebSer
         );
     }
 
-    @RequestMapping("/getForObjectWithParam")
+    @GetMapping("/getForObjectWithParam")
     public String getForObjectWithStringAndMap(){
         Map<String, String> templateParams = new HashMap<>();
         templateParams.put("parameter", "myParameter"); // placeholder and its value
@@ -51,13 +52,13 @@ public class RestTemplateController implements ApplicationListener<ServletWebSer
                         templateParams);
     }
 
-    @RequestMapping("/postForObject")
+    @GetMapping("/postForObject")
     public String postForObjectWithStringVarargs(){
         return restTemplate.postForObject("http://localhost:{port}/mapping",
                 "1234567890", String.class, port);
     }
 
-    @RequestMapping("/exchangeForLocationHttpEntity")
+    @GetMapping("/exchangeForLocationHttpEntity")
     public User exchangeForLocationHttpEntity() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
