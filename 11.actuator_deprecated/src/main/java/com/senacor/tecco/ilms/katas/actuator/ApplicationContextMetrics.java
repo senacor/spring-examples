@@ -1,22 +1,28 @@
 //package com.senacor.tecco.ilms.katas.actuator;
 //
+//import io.micrometer.core.instrument.MeterRegistry;
 //import org.aspectj.lang.annotation.Aspect;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.stereotype.Component;
 //
+//import javax.annotation.PostConstruct;
+//
 ///**
-// * Created by fsubasi on 09.02.2016.
-// * In this demonstration we would like to show how to create custom metrics by implementing PublicMetrics
+// * In this demonstration we would like to show how to create custom metrics using micronaut
 // */
 //@Component
-//public class ApplicationContextMetrics implements PublicMetrics {
-//    private ApplicationContext context;
-//    @Autowired
-//    public ApplicationContextMetrics(ApplicationContext context) {
+//public class ApplicationContextMetrics {
+//    private final ApplicationContext context;
+//    private final MeterRegistry meterRegistry;
+//
+//    public ApplicationContextMetrics(ApplicationContext context,
+//                                     MeterRegistry meterRegistry) {
 //        this.context = context;
+//        this.meterRegistry = meterRegistry;
 //    }
-//    @Override
+//
+//    @PostConstruct
 //    public Collection<Metric<?>> metrics() {
 //        List<Metric<?>> metrics = new ArrayList<Metric<?>>();
 //        // lets create a metric that keeps application startup time

@@ -53,4 +53,12 @@ public class User {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public User updateFrom(User update) {
+        this.firstName = update.firstName;
+        this.lastName = update.lastName;
+        this.email = update.email;
+
+        return this;
+    }
 }

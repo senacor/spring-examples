@@ -16,7 +16,6 @@ import org.junit.platform.commons.logging.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -44,6 +43,7 @@ class TestSyntaxUsingJunit5 {
      */
     @BeforeEach
     void setUpUsers() {
+        // Given
         userService.saveUser(new User("Jack", "Doe", "jackdoe@example.com"));
         userService.saveUser(new User("Brett", "Lee", "brettlee@example.com"));
         userService.saveUser(new User("Maria", "Liu", "marialiu@example.com"));
@@ -72,11 +72,14 @@ class TestSyntaxUsingJunit5 {
      */
     @Test
     void saveUserAddsNewUserToExistingList() {
+        // Given
         int countBefore = userService.countUsers();
         User user = userService.saveUser(new User("Peter", "Pan", "peterpan@example.com"));
 
+        // When
         List<User> allUsers = userService.getAllUsers();
 
+        // Then
         assertNotNull(allUsers);
         assertTrue(allUsers.contains(user));
         assertEquals(allUsers.size(), countBefore + 1);
@@ -88,8 +91,10 @@ class TestSyntaxUsingJunit5 {
     @Test
     @Disabled("TODO: needs some fixes before production use first")
     void countUserReturnsCorrectValue() {
+        // When
         int countUsers = userService.countUsers();
 
+        // Then
         assertEquals(userService.getAllUsers().size(), countUsers);
     }
 
@@ -98,8 +103,10 @@ class TestSyntaxUsingJunit5 {
      */
     @Test
     void manuallyFailingTest() {
+        // When
         int count = userService.countUsers();
 
+        // Then
         if (count > 0) {
             fail("Count should never be bigger than 0");
         }
@@ -113,10 +120,12 @@ class TestSyntaxUsingJunit5 {
     @ParameterizedTest
     @MethodSource("getUsers")
     void nullableUserFieldsAccepted(User user) {
+        // When
         User savedUser = userService.saveUser(user);
 
-        assertThat(savedUser).isNotNull();
-        assertThat(savedUser.getUserId()).isNotNull();
+        // Then
+        assertNotNull(savedUser);
+        assertNotNull(savedUser.getUserId());
     }
 
     private static List<User> getUsers() {

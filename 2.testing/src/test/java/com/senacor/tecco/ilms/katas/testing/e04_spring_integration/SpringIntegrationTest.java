@@ -1,16 +1,15 @@
 package com.senacor.tecco.ilms.katas.testing.e04_spring_integration;
 
 import com.senacor.tecco.ilms.katas.testing.TestingApplication;
-import com.senacor.tecco.ilms.katas.testing.web.rest.UserController;
 import com.senacor.tecco.ilms.katas.testing.model.User;
 import com.senacor.tecco.ilms.katas.testing.response.UserResponse;
 import com.senacor.tecco.ilms.katas.testing.service.UserService;
+import com.senacor.tecco.ilms.katas.testing.web.rest.UserController;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Using @SpringBootTest the whole application with its context is started and dependencies are injected using spring
  * dependency injection.
  */
-@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = TestingApplication.class)
 class SpringIntegrationTest {
 
@@ -32,6 +30,7 @@ class SpringIntegrationTest {
 
     @BeforeEach
     void setUpUsers() {
+        // Given
         userToFind = userService.saveUser(new User("Jack", "Doe", "jackdoe@example.com"));
         userService.saveUser(new User("Brett", "Lee", "brettlee@example.com"));
         userService.saveUser(new User("Maria", "Liu", "marialiu@example.com"));
@@ -39,10 +38,17 @@ class SpringIntegrationTest {
         userService.saveUser(new User("Sophie", "West", "sophiewest@example.com"));
     }
 
+    @AfterEach
+    void cleanUpDatabase() {
+        userService.getAllUsers().stream().map(User::getUserId).forEach(userService::deleteUser);
+    }
+
     @Test
     void test() {
+        // When
         UserResponse userResponse = userController.getUser(userToFind.getUserId());
 
+        // Then
         assertThat(userResponse.getUser()).isEqualTo(userToFind);
     }
 }

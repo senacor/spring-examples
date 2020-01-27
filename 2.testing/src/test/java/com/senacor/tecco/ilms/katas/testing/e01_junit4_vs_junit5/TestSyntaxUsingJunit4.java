@@ -17,7 +17,6 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -42,6 +41,7 @@ public class TestSyntaxUsingJunit4 {
      */
     @Before
     public void setUpUsers() {
+        // Given
         userService.saveUser(new User("Jack", "Doe", "jackdoe@example.com"));
         userService.saveUser(new User("Brett", "Lee", "brettlee@example.com"));
         userService.saveUser(new User("Maria", "Liu", "marialiu@example.com"));
@@ -70,11 +70,14 @@ public class TestSyntaxUsingJunit4 {
      */
     @Test
     public void saveUserAddsNewUserToExistingList() {
+        // Given
         int countBefore = userService.countUsers();
         User user = userService.saveUser(new User("Peter", "Pan", "peterpan@example.com"));
 
+        // When
         List<User> allUsers = userService.getAllUsers();
 
+        // Then
         assertNotNull(allUsers);
         assertTrue(allUsers.contains(user));
         assertEquals(countBefore + 1, allUsers.size());
@@ -86,8 +89,10 @@ public class TestSyntaxUsingJunit4 {
     @Test
     @Ignore("TODO: needs some fixes before production use first")
     public void countUserReturnsCorrectValue() {
+        // When
         int countUsers = userService.countUsers();
 
+        // Then
         assertEquals(countUsers, userService.getAllUsers().size());
     }
 
@@ -96,8 +101,10 @@ public class TestSyntaxUsingJunit4 {
      */
     @Test
     public void manuallyFailingTest() {
+        // When
         int count = userService.countUsers();
 
+        // Then
         if (count > 0) {
             fail("Count should never be bigger than 0");
         }
@@ -106,7 +113,7 @@ public class TestSyntaxUsingJunit4 {
     /**
      * Tests can be run multiple times with different parameters by using the following class contruct (not necessarily
      * an inner class).
-     *
+     * <p>
      * Class needs to be annotated with the following runner:
      */
     @RunWith(Parameterized.class)
@@ -124,11 +131,13 @@ public class TestSyntaxUsingJunit4 {
 
         @Test
         public void nullableUserFieldsAccepted() {
+            // When
             // Access the fields directly within the test
             User savedUser = userService.saveUser(user);
 
-            assertThat(savedUser).isNotNull();
-            assertThat(savedUser.getUserId()).isNotNull();
+            // Then
+            assertNotNull(savedUser);
+            assertNotNull(savedUser.getUserId());
         }
 
         // Somehow define the parameters, multiple parameters can be passed using a list of arrays

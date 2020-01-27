@@ -6,15 +6,13 @@ import feign.FeignException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
@@ -23,8 +21,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
  * in folder test/resources/wiremock.
  */
 @SpringBootTest
-@ExtendWith(SpringExtension.class)
-public class WireMock {
+public class UserService_WireMockTest {
 
     private WireMockServer wireMockServer;
 
@@ -36,6 +33,7 @@ public class WireMock {
      */
     @BeforeEach
     void configureSystemUnderTest() {
+        // Given
         this.wireMockServer = new WireMockServer(
                 options()
                         .port(4711)
@@ -57,8 +55,10 @@ public class WireMock {
      */
     @Test
     void findUserAddress_usedIdMatchingWiremockSetup() {
+        // When
         List<String> addressForUserWithId = userService.getAddressForUserWithId(12);
 
+        // Then
         assertThat(addressForUserWithId)
                 .hasSize(1)
                 .containsOnly(
@@ -69,7 +69,11 @@ public class WireMock {
 
     @Test
     void findUserAddress_usedIdNotMatchingWiremockSetup() {
-        assertThatThrownBy(() -> userService.getAddressForUserWithId(123))
+        // When
+        Throwable throwable = catchThrowable(() -> userService.getAddressForUserWithId(123));
+
+        // Then
+        assertThat(throwable)
                 .isInstanceOf(FeignException.class)
                 .satisfies(exception -> assertThat(((FeignException) exception).status()).isEqualTo(404));
     }

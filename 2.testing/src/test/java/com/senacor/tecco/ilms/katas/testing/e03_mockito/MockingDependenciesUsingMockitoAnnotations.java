@@ -42,6 +42,7 @@ class MockingDependenciesUsingMockitoAnnotations {
      */
     @Test
     void capturingMethodArguments() {
+        // Given
         when(userService.getUserFromID(anyInt())).thenAnswer(invocationOnMock -> {
             Object[] arguments = invocationOnMock.getArguments();
             Integer id = (Integer) arguments[0];
@@ -52,9 +53,11 @@ class MockingDependenciesUsingMockitoAnnotations {
             return user;
         });
 
+        // When
         userController.getUser(5);
         userController.getUser(6);
 
+        // Then
         verify(userService, times(2)).getUserFromID(integerArgumentCaptor.capture());
 
         Integer latestValue = integerArgumentCaptor.getValue();

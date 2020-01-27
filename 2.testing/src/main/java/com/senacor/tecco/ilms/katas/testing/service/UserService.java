@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
+    public static final String UID_CANNOT_BE_NULL = "uid cannot be null";
+
     private final AddressServiceClient addressServiceClient;
 
     HashMap<Integer, User> userMap = new HashMap<>();
@@ -31,7 +33,10 @@ public class UserService {
         return new ArrayList<>(userMap.values());
     }
 
-    public User getUserFromID(int uId) {
+    public User getUserFromID(Integer uId) {
+        if (uId == null) {
+            throw new IllegalArgumentException(UID_CANNOT_BE_NULL);
+        }
         return userMap.get(uId);
     }
 
@@ -42,10 +47,12 @@ public class UserService {
         return user;
     }
 
-    public User updateUser(User user) {
-        int uid = user.getUserId();
-        userMap.put(uid,user);
-        return user;
+    public User updateUser(Integer userId, User user) {
+        User userToUpdate = userMap.getOrDefault(userId, user);
+        userToUpdate.updateFrom(user);
+
+        userMap.put(userId, userToUpdate);
+        return userToUpdate;
     }
 
     public void deleteUser(int uid) {

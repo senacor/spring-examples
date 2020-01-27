@@ -10,9 +10,14 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Optional;
 
+import static com.senacor.tecco.ilms.katas.testing.service.UserService.UID_CANNOT_BE_NULL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * AssertJ introduces much more powerful assertion implementations, improving the handling and debugging with extended
@@ -24,6 +29,7 @@ class AssertJSyntax {
 
     @BeforeEach
     void setUpUsers() {
+        // Given
         userService.saveUser(new User("Jack", "Doe", "jackdoe@example.com"));
         userService.saveUser(new User("Brett", "Lee", "brettlee@example.com"));
         userService.saveUser(new User("Maria", "Liu", "marialiu@example.com"));
@@ -37,49 +43,111 @@ class AssertJSyntax {
     }
 
     /**
-     * AssertJ introduces different assertions, making both, the assertion and error message more readable
+     * Plain JUnit Assertions only offer a limited number of assertions, which does not provide a helpful error
+     * description for every use case.
      */
     @Test
-    void assertJ() {
-        User newUser = new User("Peter", "Pan", "peterpan@example.com");
+    void jUnitAssertion_assertEquals() {
+        // When
         List<User> allUsers = userService.getAllUsers();
 
-        // Plain JUnit Assertions:
-
-        // java.lang.AssertionError: expected:<6> but was:<5>
+        // Then
         assertEquals(6, allUsers.size());
-        // java.lang.AssertionError + Stack Trace
+    }
+
+    @Test
+    void jUnitAssertion_assertTrue() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
         assertTrue(allUsers.contains(newUser));
+    }
 
-        // AssertJ Assertions:
+    @Test
+    void jUnitAssertions_checkingExceptions() {
+        // Then, When
+        assertThrows(IllegalArgumentException.class, () -> userService.getUserFromID(null));
+    }
 
-        // OUTPUT:
-        // java.lang.AssertionError:
-        // Expected size:<6> but was:<5> in:
-        // <[User{userId=1, firstName='Jack', lastName='Doe', email='jackdoe@example.com'},
-        //    User{userId=2, firstName='Brett', lastName='Lee', email='brettlee@example.com'},
-        //    User{userId=3, firstName='Maria', lastName='Liu', email='marialiu@example.com'},
-        //    User{userId=4, firstName='Shane', lastName='Lee', email='shanelee@example.com'},
-        //    User{userId=5, firstName='Sophie', lastName='West', email='sophiewest@example.com'}]>
+    /**
+     * Instead of generic assertions, assertJ uses method overloading to create specific assertions for different
+     * objects, allowing much more concise result checks and improvements of the description in case of an error.
+     */
+    @Test
+    void assertJAssertions_hasSize() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
         assertThat(allUsers).hasSize(6);
-        // OUTPUT:
-        //java.lang.AssertionError:
-        // Expecting:
-        //  <[User{userId=1, firstName='Jack', lastName='Doe', email='jackdoe@example.com'},
-        //    User{userId=2, firstName='Brett', lastName='Lee', email='brettlee@example.com'},
-        //    User{userId=3, firstName='Maria', lastName='Liu', email='marialiu@example.com'},
-        //    User{userId=4, firstName='Shane', lastName='Lee', email='shanelee@example.com'},
-        //    User{userId=5, firstName='Sophie', lastName='West', email='sophiewest@example.com'}]>
-        // to contain:
-        //  <[User{userId=0, firstName='Peter', lastName='Pan', email='peterpan@example.com'}]>
-        // but could not find:
-        //  <[User{userId=0, firstName='Peter', lastName='Pan', email='peterpan@example.com'}]>
-        assertThat(allUsers).contains(newUser);
-        // concatenation possible
-        assertThat(allUsers).hasSize(5).doesNotContain(newUser);
+    }
 
+    @Test
+    void assertJAssertions_contains() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
+        assertThat(allUsers).contains(newUser);
+    }
+
+    /**
+     * Multiple assertions on the same object can be concatenated, assertion stops on first error
+     */
+    @Test
+    void assertJAssertions_concatenated() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
+        assertThat(allUsers).hasSize(5).doesNotContain(newUser);
+    }
+
+    @Test
+    void assertJAssertions_checkingExceptions() {
+        // When, Then
+        assertThatThrownBy(() -> userService.getUserFromID(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(UID_CANNOT_BE_NULL);
+    }
+
+    @Test
+    void assertJAssertions_checkingExceptions_BestPractice() {
+        // When
+        Throwable throwable = catchThrowable(() -> userService.getUserFromID(null));
+
+        // Then
+        assertThat(throwable)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(UID_CANNOT_BE_NULL);
+    }
+
+    @Test
+    void assertJAssertions_explicitlyNoException() {
+        // When, Then
+        assertThatCode(() -> userService.getUserFromID(5))
+                .doesNotThrowAnyException();
+    }
+
+    /**
+     * Code completions offered by the IDE makes it easier to find the correct assertion for specific use cases.
+     */
+    @Test
+    void assertJAssertions_examples() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
         assertThat(newUser).isEqualToComparingFieldByField(new User("Peter", "Pan", "peterpan@example.com"));
         assertThat(Optional.of(newUser)).hasValueSatisfying(user -> assertThat(user.getUserId()).isNull());
+        assertThat(allUsers)
+                .extracting("name")
+                .containsExactlyInAnyOrder("Jack", "Brett", "Maria", "Shane", "Sophie");
     }
 
     /**
@@ -88,9 +156,11 @@ class AssertJSyntax {
      */
     @Test
     void softAssertions() {
-        User newUser = new User("Peter", "Pan", "peterpan@example.com");
+        // When
         List<User> allUsers = userService.getAllUsers();
 
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(allUsers).hasSize(6);
         softAssertions.assertThat(allUsers).contains(newUser);
@@ -105,9 +175,11 @@ class AssertJSyntax {
 
     @Test
     void softAssertions_nullableCheck_Failure() {
+        // When
         // Beware of null pointer exceptions
         User nullable = userService.getUserFromID(Integer.MAX_VALUE);
 
+        // Then
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(nullable).isNotNull();
             softly.assertThat(nullable.getUserId()).isEqualTo(Integer.MAX_VALUE);
@@ -117,8 +189,10 @@ class AssertJSyntax {
 
     @Test
     void softAssertions_nullableCheck_BestPractice() {
+        // When
         User nullable = userService.getUserFromID(Integer.MAX_VALUE);
 
+        // Then
         // Check outside of soft assertion, failing before further checks
         assertThat(nullable).isNotNull();
         SoftAssertions.assertSoftly(softly -> {

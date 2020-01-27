@@ -46,12 +46,15 @@ public class SpyingDependencies {
      */
     @Test
     void mockMethodsOfASpy() {
+        // Given
         User mockedUser = new User("Peter", "Pan", "peterpan@example.com");
         // Syntax slightly defers from definition of method calls on mocks
         doReturn(mockedUser).when(userService).saveUser(any(User.class));
 
+        // When
         UserResponse userResponse = userController.createUser(mockedUser);
 
+        // Then
         verify(userService).saveUser(eq(mockedUser));
 
         assertThat(userResponse.getUser()).isEqualTo(mockedUser);

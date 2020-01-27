@@ -52,10 +52,14 @@ public class MockingDependencies {
      */
     @Test
     void mockMethods() {
+        // Given
         User mockedUser = new User("Peter", "Pan", "peterpan@example.com");
         when(userService.getUserFromID(anyInt())).thenReturn(mockedUser);
 
+        // When
         UserResponse user = userController.getUser(5);
+
+        // then
         assertThat(user.getUser()).isEqualTo(mockedUser);
     }
 
@@ -64,17 +68,24 @@ public class MockingDependencies {
      */
     @Test
     void resetMock() {
+        // Given
         User mockedUser = new User("Peter", "Pan", "peterpan@example.com");
         when(userService.getUserFromID(anyInt())).thenReturn(mockedUser);
 
+        // When
         UserResponse user = userController.getUser(5);
+
+        // Then
         assertThat(user.getUser()).isEqualTo(mockedUser);
 
+        // Given
         reset(userService);
 
+        // When
         user = userController.getUser(5);
-        assertThat(user.getUser()).isNull();
 
+        // Then
+        assertThat(user.getUser()).isNull();
     }
 
     /**
@@ -82,27 +93,35 @@ public class MockingDependencies {
      */
     @Test
     void usingMatchers() {
+        // Given
         User mockedUser = new User("Peter", "Pan", "peterpan@example.com");
         when(userService.getUserFromID(eq(5))).thenReturn(mockedUser);
 
+        // When
         UserResponse user5 = userController.getUser(5);
-        assertThat(user5.getUser()).isEqualTo(mockedUser);
-
         UserResponse user6 = userController.getUser(6);
-        assertThat(user6.getUser()).isNull();
 
+        // Then
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(user5.getUser()).isEqualTo(mockedUser);
+            softly.assertThat(user6.getUser()).isNull();
+        });
+
+        // Given
         reset(userService);
         when(userService.getUserFromID(gt(5))).thenReturn(mockedUser);
 
-        user5 = userController.getUser(5);
-        assertThat(user5.getUser()).isNull();
-
-        user6 = userController.getUser(6);
-        assertThat(user6.getUser()).isEqualTo(mockedUser);
-
+        // When
+        UserResponse user5_2 = userController.getUser(5);
+        UserResponse user6_2 = userController.getUser(6);
         UserResponse user7 = userController.getUser(7);
-        assertThat(user7.getUser()).isEqualTo(mockedUser);
 
+        // Then
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(user5_2.getUser()).isNull();
+            softly.assertThat(user6_2.getUser()).isEqualTo(mockedUser);
+            softly.assertThat(user7.getUser()).isEqualTo(mockedUser);
+        });
     }
 
     /**
@@ -110,6 +129,7 @@ public class MockingDependencies {
      */
     @Test
     void returnValuesDependingOnInput() {
+        // Given
         when(userService.getUserFromID(anyInt())).thenAnswer(invocationOnMock -> {
             Object[] arguments = invocationOnMock.getArguments();
             Integer id = (Integer) arguments[0];
@@ -120,9 +140,11 @@ public class MockingDependencies {
             return user;
         });
 
+        // When
         UserResponse user5 = userController.getUser(5);
         UserResponse user6 = userController.getUser(6);
 
+        // Then
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(user5.getUser()).isNotNull();
             softly.assertThat(user6.getUser()).isNotNull();
@@ -139,11 +161,14 @@ public class MockingDependencies {
      */
     @Test
     void verifyingActualMessageCalls() {
+        // Given
         User mockedUser = new User("Peter", "Pan", "peterpan@example.com");
         when(userService.getUserFromID(anyInt())).thenReturn(mockedUser);
 
+        // When
         userController.getUser(5);
 
+        // Then
         // method has been called once with argument "5"
         verify(userService, times(1)).getUserFromID(eq(5));
         // method has been called once (default value if not specified) with any argument
@@ -159,6 +184,7 @@ public class MockingDependencies {
      */
     @Test
     void capturingMethodArguments() {
+        // Given
         when(userService.getUserFromID(anyInt())).thenAnswer(invocationOnMock -> {
             Object[] arguments = invocationOnMock.getArguments();
             Integer id = (Integer) arguments[0];
@@ -169,9 +195,11 @@ public class MockingDependencies {
             return user;
         });
 
+        // When
         userController.getUser(5);
         userController.getUser(6);
 
+        // Then
         // verify the method is called 2 times with any Integer value as argument
         verify(userService, times(2)).getUserFromID(integerArgumentCaptor.capture());
 
