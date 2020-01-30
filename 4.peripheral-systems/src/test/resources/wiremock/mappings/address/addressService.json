@@ -1,0 +1,104 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/randomAddress"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_randomAddress.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/addressesWithoutFilterOption"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_allAddresses.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/addressesByPathVariable/([0-9]+)"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_userAddresses.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPath": "/addressesByQueryParam",
+        "queryParameters": {
+          "userId": {
+            "matches": "([0-9]+)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_userAddresses.json"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/jacksonExampleAddresses"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "address/200_jacksonAddresses.json"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/addresses",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$.street"
+          },
+          {
+            "matchesJsonPath": "$.number"
+          },
+          {
+            "matchesJsonPath": "$.postcode"
+          },
+          {
+            "matchesJsonPath": "$.city"
+          },
+          {
+            "matchesJsonPath": "$.type"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "{{{request.body}}}"
+      }
+    }
+  ]
+}

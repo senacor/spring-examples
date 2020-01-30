@@ -1,0 +1,24 @@
+[
+    {
+        "street": "testStreet1",
+        "number": "testNumber1",
+        "postcode": "testPostcode1",
+        "city": "testCity1",
+        "type": "HOME"
+    },
+    {
+        "streetName": "testStreet2",
+        "number": "testNumber2",
+        "postcode": "testPostcode2",
+        "city": "testCity2",
+        "additionalInfo": "this is not part of the java object",
+        "type": "HOME"
+    },
+    {
+        "street": "testStreet3",
+        "number": "testNumber3",
+        "postcode": "testPostcode3",
+        "city": "testCity3",
+        "type": "WORK"
+    }
+]

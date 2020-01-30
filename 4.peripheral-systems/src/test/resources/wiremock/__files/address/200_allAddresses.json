@@ -1,0 +1,23 @@
+[
+    {
+        "street": "testStreet1",
+        "number": "testNumber1",
+        "postcode": "testPostcode1",
+        "city": "testCity1",
+        "type": "HOME"
+    },
+    {
+        "street": "testStreet2",
+        "number": "testNumber2",
+        "postcode": "testPostcode2",
+        "city": "testCity2",
+        "type": "WORK"
+    },
+    {
+        "street": "testStreet3",
+        "number": "testNumber3",
+        "postcode": "testPostcode3",
+        "city": "testCity3",
+        "type": "HOME"
+    }
+]

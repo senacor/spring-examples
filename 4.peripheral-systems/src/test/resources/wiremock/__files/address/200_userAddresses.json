@@ -1,0 +1,9 @@
+[
+    {
+        "street": "userStreet",
+        "number": "userNumber",
+        "postcode": "userPostcode",
+        "city": "userCity",
+        "type": "HOME"
+    }
+]

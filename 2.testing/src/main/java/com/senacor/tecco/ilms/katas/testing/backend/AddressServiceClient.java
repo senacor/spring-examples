@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "address", url = "localhost:4711")
+@FeignClient(name = "addresses", url = "localhost:4711")
 public interface AddressServiceClient {
 
-    @GetMapping(value = "/address/{userId}")
+    @GetMapping(value = "/addresses/{userId}")
     List<Address> getUserAddresses(@PathVariable("userId") Integer userId);
 
 }
