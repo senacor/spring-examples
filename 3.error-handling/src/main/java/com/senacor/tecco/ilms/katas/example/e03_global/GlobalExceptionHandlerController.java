@@ -1,11 +1,11 @@
 package com.senacor.tecco.ilms.katas.example.e03_global;
 
-import org.springframework.stereotype.Controller;
+import com.senacor.tecco.ilms.katas.common.service.ExceptionThrowingService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by fsubasi on 17.01.2016
- *
  * A controller advice allows to use the same exception handling techniques
  * as in controllers (Example 2), but applies them to all controller requests,
  * not just to an individual controller. They behave like annotation driven
@@ -23,18 +23,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Here we observe that different exceptions are being intercepted by
  * their corresponding @ExceptionHandler's
  */
-
-@Controller
-@RequestMapping("/errorHandling/global")
+@RestController
+@RequestMapping("/errorhandling/global")
 public class GlobalExceptionHandlerController {
 
-    @RequestMapping("throwNFE")
-    public String messageComposer(){
-        throw new NumberFormatException();
+    private final ExceptionThrowingService service;
+
+    public GlobalExceptionHandlerController(ExceptionThrowingService service) {
+        this.service = service;
     }
 
-    @RequestMapping("throwNPE")
+    @GetMapping("/thrownumberformatexception")
+    public String messageComposer(){
+        service.throwException(new NumberFormatException());
+
+        return "Successfully processed request without Exception";
+    }
+
+    @GetMapping("/thrownullpointerexception")
     public String throwNPE(){
-        throw new NullPointerException();
+        service.throwException(new NullPointerException());
+
+        return "Successfully processed request without Exception";
     }
 }

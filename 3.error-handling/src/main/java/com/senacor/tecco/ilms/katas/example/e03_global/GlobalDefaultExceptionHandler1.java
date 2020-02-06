@@ -4,12 +4,9 @@ import com.senacor.tecco.ilms.katas.common.response.ErrorResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by fsubasi on 17.02.2016.
@@ -24,9 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalDefaultExceptionHandler1 {
 
     @ExceptionHandler({NullPointerException.class})
-    @ResponseBody
-    public ResponseEntity<Object> handleException(HttpServletRequest request, Exception e) throws Exception{
-        return new ResponseEntity<Object>(createErrorMessage(e), HttpStatus.INTERNAL_SERVER_ERROR);
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleException(Exception e) {
+        return createErrorMessage(e);
     }
 
     public ErrorResponse createErrorMessage(Exception e) {

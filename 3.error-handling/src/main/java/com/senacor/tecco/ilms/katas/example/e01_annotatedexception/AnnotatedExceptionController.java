@@ -1,13 +1,12 @@
 package com.senacor.tecco.ilms.katas.example.e01_annotatedexception;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
+import com.senacor.tecco.ilms.katas.common.service.ExceptionThrowingService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.NestedServletException;
 
 /**
- * Created by fsubasi on 17.01.2016.
- *
  * Exception Example 1: Default Exception Handling with spring
  *
  * When processing web-requests, spring intercepts unhandled exception with its
@@ -29,21 +28,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * In this controller, we simply throw a BookNotFoundException in order to be able to observe
  * the response code and message we configured in our custom exception by using @ResponseStatus
  */
-@Controller
-@RequestMapping("/errorHandling")
+@RestController
+@RequestMapping(value = "/errorhandling")
 public class AnnotatedExceptionController {
 
-    @Autowired
-    ApplicationContext context;
+    private final ExceptionThrowingService service;
 
-    @RequestMapping("plainException")
-    public String throRuntimeException(){
-        throw new RuntimeException("Das ist eine Exception");
+    public AnnotatedExceptionController(ExceptionThrowingService service) {
+        this.service = service;
     }
 
-    @RequestMapping("annotatedException")
+    /**
+     * All unhandled exceptions will result in a {@link NestedServletException} which will be mapped to Http Status Code
+     * 500 - Internal Server Error in the actual application
+     */
+    @GetMapping("/plainexception")
+    public String throwRuntimeException(){
+        service.throwException(new RuntimeException("Das ist eine Exception"));
+
+        return "Successfully processed request without Exception";
+    }
+
+    /**
+     * Custom error response status using annotated exception
+     */
+    @GetMapping("annotatedexception")
     public String throwBookNotFoundException(){
-        throw new BookNotFoundException();
+        service.throwException(new BookNotFoundException());
+
+        return "Successfully processed request without Exception";
     }
 
 }
