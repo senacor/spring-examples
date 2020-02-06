@@ -1,9 +1,9 @@
 package com.senacor.tecco.ilms.katas.testing.e03_mockito;
 
-import com.senacor.tecco.ilms.katas.testing.web.rest.UserController;
 import com.senacor.tecco.ilms.katas.testing.model.User;
 import com.senacor.tecco.ilms.katas.testing.response.UserResponse;
 import com.senacor.tecco.ilms.katas.testing.service.UserService;
+import com.senacor.tecco.ilms.katas.testing.web.rest.UserController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
 package com.senacor.tecco.ilms.katas.testing.e05_mocking_external_services;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.senacor.tecco.ilms.katas.testing.service.UserService;
+import com.senacor.tecco.ilms.katas.testing.service.AddressService;
 import feign.FeignException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,12 +21,12 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
  * in folder test/resources/wiremock.
  */
 @SpringBootTest
-public class UserService_WireMockTest {
+public class AddressService_WireMockTest {
 
     private WireMockServer wireMockServer;
 
     @Autowired
-    private UserService userService;
+    private AddressService addressService;
 
     /**
      * Set up wiremock server in background using the api definition found in the test resource folder
@@ -56,7 +56,7 @@ public class UserService_WireMockTest {
     @Test
     void findUserAddress_usedIdMatchingWiremockSetup() {
         // When
-        List<String> addressForUserWithId = userService.getAddressForUserWithId(12);
+        List<String> addressForUserWithId = addressService.getAddressForUserWithId(12);
 
         // Then
         assertThat(addressForUserWithId)
@@ -70,7 +70,7 @@ public class UserService_WireMockTest {
     @Test
     void findUserAddress_usedIdNotMatchingWiremockSetup() {
         // When
-        Throwable throwable = catchThrowable(() -> userService.getAddressForUserWithId(123));
+        Throwable throwable = catchThrowable(() -> addressService.getAddressForUserWithId(123));
 
         // Then
         assertThat(throwable)

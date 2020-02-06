@@ -26,7 +26,7 @@ public class TestSyntaxUsingJunit4 {
 
     private static final Logger logger = LoggerFactory.getLogger(TestSyntaxUsingJunit4.class);
 
-    private UserService userService = new UserService(null);
+    private UserService userService = new UserService();
 
     /**
      * Will be executed before all tests, should be used for heavy tasks supposed to run only once
@@ -119,7 +119,7 @@ public class TestSyntaxUsingJunit4 {
     @RunWith(Parameterized.class)
     public static class ParameterizedTest {
 
-        private UserService userService = new UserService(null);
+        private UserService userService = new UserService();
 
         // For each parameter a field needs to be added
         private final User user;

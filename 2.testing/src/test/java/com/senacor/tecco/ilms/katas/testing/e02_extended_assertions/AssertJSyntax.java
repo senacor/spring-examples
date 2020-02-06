@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 class AssertJSyntax {
 
-    private UserService userService = new UserService(null);
+    private UserService userService = new UserService();
 
     @BeforeEach
     void setUpUsers() {

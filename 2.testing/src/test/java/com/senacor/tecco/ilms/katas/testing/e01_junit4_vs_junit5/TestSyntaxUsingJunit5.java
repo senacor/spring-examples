@@ -28,7 +28,7 @@ class TestSyntaxUsingJunit5 {
 
     private static final Logger logger = LoggerFactory.getLogger(TestSyntaxUsingJunit5.class);
 
-    private UserService userService = new UserService(null);
+    private UserService userService = new UserService();
 
     /**
      * Will be executed before all tests, should be used for heavy tasks supposed to run only once
