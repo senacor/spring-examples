@@ -1,0 +1,12 @@
+GET http://localhost:8080/responseEntity/users/1
+Accept: application/json
+
+###
+
+POST http://localhost:8080/responseEntity/users/
+Accept: application/json
+Content-Type: application/json
+
+{"userId":1,"firstName":"Jack","lastName":"Doe","email":"jackdoe@example.com"}
+
+###

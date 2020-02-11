@@ -1,0 +1,9 @@
+GET http://localhost:8080/basics/helloWorld
+Accept: application/json
+
+###
+
+GET http://localhost:8080/basics/helloWorldRest
+Accept: application/json
+
+###

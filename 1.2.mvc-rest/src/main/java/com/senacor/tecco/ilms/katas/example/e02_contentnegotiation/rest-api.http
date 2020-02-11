@@ -1,0 +1,9 @@
+GET http://localhost:8080/negotiation/user
+Accept: application/json
+
+###
+
+GET http://localhost:8080/negotiation/user
+Accept: application/xml
+
+###

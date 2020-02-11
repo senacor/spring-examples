@@ -1,0 +1,30 @@
+POST http://localhost:8080/postmapping
+Accept: text/html
+Content-type: text/html
+
+Das ist ein Teststring
+
+###
+
+POST http://localhost:8080/postmapping/form?name=michael
+Accept: text/html
+Content-type: application/x-www-form-urlencoded
+
+###
+
+POST http://localhost:8080/postmapping/consumes
+Accept: application/json
+Content-type: application/json
+
+{"userId":1,"firstName":"Jack","lastName":"Doe","email":"jackdoe@example.com"}
+
+###
+
+
+POST http://localhost:8080/postmapping/users
+Accept: application/json
+Content-type: application/json
+
+{"userId":1,"firstName":"Jack","lastName":"Doe","email":"jackdoe@example.com"}
+
+###

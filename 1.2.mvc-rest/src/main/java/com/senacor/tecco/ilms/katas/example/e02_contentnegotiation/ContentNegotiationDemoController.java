@@ -1,7 +1,9 @@
 package com.senacor.tecco.ilms.katas.example.e02_contentnegotiation;
 
 import com.senacor.tecco.ilms.katas.common.model.User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Dr. Michael Menzel on 30.08.2016.

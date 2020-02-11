@@ -1,0 +1,31 @@
+GET http://localhost:8080/mapping/pathVariable/test123
+Accept: application/json
+
+###
+GET http://localhost:8080/mapping/pathVariableWithRegex/test123
+Accept: application/json
+
+###
+GET http://localhost:8080/mapping/pathVariableWithRegex/123
+Accept: application/json
+
+###
+GET http://localhost:8080/mapping/queryParam?name=michael
+Accept: application/json
+
+###
+
+GET http://localhost:8080/mapping/requiredQueryParams?name=michael
+Accept: application/json
+
+###
+
+GET http://localhost:8080/mapping/hotel/34;floor=45;room=3/guest
+Accept: application/json
+
+###
+
+GET http://localhost:8080/mapping/users/1
+Accept: application/json
+
+###
