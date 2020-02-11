@@ -24,8 +24,8 @@
 		<java.version>11</java.version>
 		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
 		<swagger-ui.version>3.24.3</swagger-ui.version>
-		<springfox.version>3.0.0-SNAPSHOT</springfox.version>
-		<swagger-annotations.version>1.5.8</swagger-annotations.version>
+		<springfox.version>2.9.2</springfox.version>
+		<swagger-annotations.version>2.1.1</swagger-annotations.version>
 		<annotations.version>18.0.0</annotations.version>
 		<spring-plugin-metadata.version>2.0.0.RELEASE</spring-plugin-metadata.version>
 	</properties>
@@ -63,10 +63,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>swagger-ui</artifactId>
 			<version>${swagger-ui.version}</version>
@@ -82,7 +78,7 @@
 			<version>${springfox.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.swagger</groupId>
+			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-annotations</artifactId>
 			<version>${swagger-annotations.version}</version>
 		</dependency>

@@ -1,20 +1,17 @@
-package com.senacor.tecco.ilms.katas.common.service;
+package com.senacor.tecco.ilms.katas.example.service;
+
+import com.senacor.tecco.ilms.katas.example.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import com.senacor.tecco.ilms.katas.common.model.User;
-import org.springframework.stereotype.Component;
-
-/**
- *
- */
 @Component
 public class UserService {
 
-    HashMap<Integer,User> userMap = new HashMap<Integer,User>();
+    HashMap<Integer, User> userMap = new HashMap<>();
     AtomicInteger userIdSequence = new AtomicInteger(0);
 
     public UserService() {

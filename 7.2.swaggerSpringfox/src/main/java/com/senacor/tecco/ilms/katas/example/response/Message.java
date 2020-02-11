@@ -1,4 +1,4 @@
-package com.senacor.tecco.ilms.katas.common.response;
+package com.senacor.tecco.ilms.katas.example.response;
 
 /**
  * Created by fsubasi on 15.02.2016.

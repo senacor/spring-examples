@@ -8,7 +8,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
@@ -22,8 +22,9 @@ import static springfox.documentation.builders.PathSelectors.regex;
  *
  */
 @SpringBootApplication
-@EnableSwagger2WebMvc //Enable swagger 2.0 spec
+@EnableSwagger2 //Enable swagger 2.0 spec
 public class Application {
+
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 	}
@@ -42,8 +43,7 @@ public class Application {
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
 				.title("Springfox Swagger demo API specification")
-				.description("A demo application developed with Spring framework, providing " +
-						"an example for RESTful resources.")
+				.description("A demo application developed with Spring framework, providing an example for RESTful resources.")
 				.license("Apache License Version 2.0")
 				.licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")
 				.version("2.0")

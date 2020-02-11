@@ -21,7 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @ExtendWith(RestDocumentationExtension.class)
 @SpringBootTest
-class UserRestServiceTest {
+class UserRestControllerTest {
 
 
     private RestDocumentationResultHandler document;

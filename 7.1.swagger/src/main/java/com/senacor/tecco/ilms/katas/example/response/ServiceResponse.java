@@ -1,4 +1,4 @@
-package com.senacor.tecco.ilms.katas.common.response;
+package com.senacor.tecco.ilms.katas.example.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
