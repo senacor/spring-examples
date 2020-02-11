@@ -55,22 +55,6 @@ class AssertJSyntax {
         assertEquals(6, allUsers.size());
     }
 
-    @Test
-    void jUnitAssertion_assertTrue() {
-        // When
-        List<User> allUsers = userService.getAllUsers();
-
-        // Then
-        User newUser = new User("Peter", "Pan", "peterpan@example.com");
-        assertTrue(allUsers.contains(newUser));
-    }
-
-    @Test
-    void jUnitAssertions_checkingExceptions() {
-        // Then, When
-        assertThrows(IllegalArgumentException.class, () -> userService.getUserFromID(null));
-    }
-
     /**
      * Instead of generic assertions, assertJ uses method overloading to create specific assertions for different
      * objects, allowing much more concise result checks and improvements of the description in case of an error.
@@ -82,6 +66,16 @@ class AssertJSyntax {
 
         // Then
         assertThat(allUsers).hasSize(6);
+    }
+
+    @Test
+    void jUnitAssertion_assertTrue() {
+        // When
+        List<User> allUsers = userService.getAllUsers();
+
+        // Then
+        User newUser = new User("Peter", "Pan", "peterpan@example.com");
+        assertTrue(allUsers.contains(newUser));
     }
 
     @Test
@@ -105,6 +99,12 @@ class AssertJSyntax {
         // Then
         User newUser = new User("Peter", "Pan", "peterpan@example.com");
         assertThat(allUsers).hasSize(5).doesNotContain(newUser);
+    }
+
+    @Test
+    void jUnitAssertions_checkingExceptions() {
+        // Then, When
+        assertThrows(IllegalArgumentException.class, () -> userService.getUserFromID(null));
     }
 
     @Test
@@ -146,7 +146,7 @@ class AssertJSyntax {
         assertThat(newUser).isEqualToComparingFieldByField(new User("Peter", "Pan", "peterpan@example.com"));
         assertThat(Optional.of(newUser)).hasValueSatisfying(user -> assertThat(user.getUserId()).isNull());
         assertThat(allUsers)
-                .extracting("name")
+                .extracting("firstName")
                 .containsExactlyInAnyOrder("Jack", "Brett", "Maria", "Shane", "Sophie");
     }
 

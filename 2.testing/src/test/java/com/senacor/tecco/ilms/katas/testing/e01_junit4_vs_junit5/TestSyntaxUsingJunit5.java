@@ -35,7 +35,7 @@ class TestSyntaxUsingJunit5 {
      */
     @BeforeAll
     static void initialize() {
-        logger.info(() -> "startup - creating DB connection");
+        logger.info(() -> "startup");
     }
 
     /**
@@ -56,7 +56,7 @@ class TestSyntaxUsingJunit5 {
      */
     @AfterAll
     static void shutDown() {
-        logger.info(() -> "shutdown - closing DB connection");
+        logger.info(() -> "shutdown");
     }
 
     /**
@@ -74,12 +74,13 @@ class TestSyntaxUsingJunit5 {
     void saveUserAddsNewUserToExistingList() {
         // Given
         int countBefore = userService.countUsers();
-        User user = userService.saveUser(new User("Peter", "Pan", "peterpan@example.com"));
 
         // When
-        List<User> allUsers = userService.getAllUsers();
+        User user = userService.saveUser(new User("Peter", "Pan", "peterpan@example.com"));
 
         // Then
+        List<User> allUsers = userService.getAllUsers();
+
         assertNotNull(allUsers);
         assertTrue(allUsers.contains(user));
         assertEquals(allUsers.size(), countBefore + 1);
