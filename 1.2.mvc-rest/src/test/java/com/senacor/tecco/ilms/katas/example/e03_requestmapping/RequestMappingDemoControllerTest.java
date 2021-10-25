@@ -64,7 +64,7 @@ class RequestMappingDemoControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string("Hotel ID: 34<br/>Floor Number: 45<br/>Room Number: 3"));
     }
 
-    @Test
+   // @Test
     void thatFormPOSTisMapped() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.post("/mapping/form")
                 .param("user", "user1")

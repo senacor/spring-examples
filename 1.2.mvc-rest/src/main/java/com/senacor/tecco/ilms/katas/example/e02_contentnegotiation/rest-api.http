@@ -1,4 +1,4 @@
-GET http://localhost:8080/negotiation/user
+GET http://localhost:8080/negotiation/users
 Accept: application/json
 
 ###

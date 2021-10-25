@@ -1,9 +1,13 @@
 package com.senacor.tecco.ilms.katas.example.e02_contentnegotiation;
 
 import com.senacor.tecco.ilms.katas.common.model.User;
+import com.senacor.tecco.ilms.katas.common.model.User2;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Dr. Michael Menzel on 30.08.2016.
@@ -37,9 +41,14 @@ public class ContentNegotiationDemoController {
     // map /negotiation/user to getUser.
     // The represention of the User object depend on the content negotiation
     // use .xml/.json to retrieve different representations
-    @RequestMapping(value = "user", method = RequestMethod.GET)
+    @GetMapping(value = "user")
     public User getUser(){
         return new User("Michael", "Menzel", "michael.menzel@senacor.com");
+    }
+
+    @GetMapping(value = "users")
+    public List<User> getUsers(){
+        return List.of(new User("Michael", "Menzel", "michael.menzel@senacor.com"));
     }
 
     //the use of produce parameter in @RequestMapping restricts to XML
