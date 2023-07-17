@@ -27,7 +27,7 @@
 		<swagger-springmvc.version>1.0.2</swagger-springmvc.version>
 		<swagger-annotations.version>2.1.1</swagger-annotations.version>
 		<swagger-spring-mvc-ui.version>0.4</swagger-spring-mvc-ui.version>
-		<spring-hateoas.version>1.0.3.RELEASE</spring-hateoas.version>
+		<spring-hateoas.version>1.5.5</spring-hateoas.version>
 		<jaxb-api.version>2.3.1</jaxb-api.version>
 	</properties>
 
