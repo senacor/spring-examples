@@ -21,7 +21,7 @@
 		<feign.version>9.3.1</feign.version>
 		<java.version>11</java.version>
 		<spring-cloud-starter.version>2.2.1.RELEASE</spring-cloud-starter.version>
-		<wiremock-jre8.version>2.23.2</wiremock-jre8.version>
+		<wiremock-jre8.version>2.35.1</wiremock-jre8.version>
 	</properties>
 
 	<dependencies>
